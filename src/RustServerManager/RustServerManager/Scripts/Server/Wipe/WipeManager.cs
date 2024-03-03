@@ -10,16 +10,14 @@ namespace RustServerManager.Server.Wipe
 {
     public static class WipeManager
     {
-        public static void InitiateServerWipe(bool wipeBlueprints, Action completionCallback)
+        public static void InitiateServerWipe(bool wipeBlueprints)
         {
-            Tools.LogTools.LogEvent("WIPE-INFO", "Initiating server wipe...", false);
+            Tools.LogTools.LogEvent("WIPE/INFO", "Initiating server wipe...", false, false, ConsoleColor.Gray);
             StopRustDedicated(true);
 
             WipeServerFiles(wipeBlueprints);
             if (CONFIG.SERVER_SEED_RANDOM_ENABLE)
                 CONFIG.SERVER_SEED = GenerateRandomSeed();
-
-            completionCallback?.Invoke();
         }
 
         private static void WipeServerFiles(bool wipeBlueprints)
@@ -29,9 +27,17 @@ namespace RustServerManager.Server.Wipe
                 BackupServer();
             }
 
-            Tools.LogTools.LogEvent("WIPE-INFO", "Wiping server files...", false);
+            Tools.LogTools.LogEvent("WIPE/INFO", "Wiping server files...", false, false, ConsoleColor.Gray);
 
-            foreach (string file in Directory.GetFiles(CONFIG.STEAMCMD_FORCE_INSTALL_DIR + "\\server\\" + CONFIG.SERVER_IDENTITY))
+            string baseDirectory = CONFIG.STEAMCMD_FORCE_INSTALL_DIR + "\\server\\" + CONFIG.SERVER_IDENTITY;
+
+            if (!Directory.Exists(baseDirectory))
+            {
+                Tools.LogTools.LogEvent("WIPE/ERROR", "Base directory (" + baseDirectory + ") does not exist! Aborting wipe...", true, true, ConsoleColor.Red);
+                return;
+            }
+
+            foreach (string file in Directory.GetFiles(baseDirectory))
             {
                 bool shouldDeleteCurrentFile = true;
 
@@ -42,11 +48,11 @@ namespace RustServerManager.Server.Wipe
                     File.Delete(file);
             }
 
-            foreach (string directory in Directory.GetDirectories(CONFIG.STEAMCMD_FORCE_INSTALL_DIR + "\\server\\" + CONFIG.SERVER_IDENTITY))
+            foreach (string directory in Directory.GetDirectories(baseDirectory))
             {
                 Directory.Delete(directory, true);
             }
-            Tools.LogTools.LogEvent("WIPE-INFO", "Server wipe finished!", false);
+            Tools.LogTools.LogEvent("WIPE/SUCCESS", "Server wipe finished!", false, false, ConsoleColor.Green);
         }
 
         public static int GenerateRandomSeed()

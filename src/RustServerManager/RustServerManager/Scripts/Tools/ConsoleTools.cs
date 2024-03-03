@@ -19,12 +19,16 @@ namespace RustServerManager.Tools
 
         public static void ShowConsole()
         {
+            Tools.LogTools.LogEvent("CONSOLE/INFO", "Showing console...", false, false, ConsoleColor.DarkGray);
+
             var handle = GetConsoleWindow();
             ShowWindow(handle, SW_HIDE);
         }
 
         public static void HideConsole()
         {
+            Tools.LogTools.LogEvent("CONSOLE/INFO", "Hiding console...", false, false, ConsoleColor.DarkGray);
+
             var handle = GetConsoleWindow();
             ShowWindow(handle, SW_SHOW);
         }

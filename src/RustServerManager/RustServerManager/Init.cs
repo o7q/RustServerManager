@@ -4,6 +4,8 @@ using System.IO.Compression;
 using System.Net;
 using System.Windows.Forms;
 
+using static RustServerManager.Global;
+
 namespace RustServerManager
 {
     internal static class Init
@@ -11,6 +13,12 @@ namespace RustServerManager
         [STAThread]
         static void Main()
         {
+            if (!Directory.Exists("RustServerManager\\logs"))
+                Directory.CreateDirectory("RustServerManager\\logs");
+
+            LOG_DATETIME = DateTime.Now;
+            Tools.LogTools.LogEvent("INIT/INFO", "RustServerManager Logging Session Started", true, true, ConsoleColor.DarkGray);
+
             if (!File.Exists("steamcmd.exe"))
             {
                 DialogResult prompt = MessageBox.Show("steamcmd.exe was not found!\nDo you want RustServerManager to download it automatically?", "", MessageBoxButtons.YesNo);
@@ -19,21 +27,21 @@ namespace RustServerManager
                 {
                     try
                     {
-                        Tools.LogTools.LogEvent("INIT", "Downloading steamcmd...", false);
+                        Tools.LogTools.LogEvent("INIT/INFO", "Downloading steamcmd...", false, false, ConsoleColor.Gray);
                         using (var client = new WebClient())
                             client.DownloadFile("https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip", "steamcmd.zip");
 
-                        Tools.LogTools.LogEvent("INIT", "Extracting steamcmd...", false);
+                        Tools.LogTools.LogEvent("INIT/INFO", "Extracting steamcmd...", false, false, ConsoleColor.Gray);
                         ZipFile.ExtractToDirectory("steamcmd.zip", ".\\");
                         File.Delete("steamcmd.zip");
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("An error occured! It can be seen below:\n\n" + ex);
+                        Tools.LogTools.LogEvent("INIT/ERROR", "An error occurred:\n\n" + ex, true, true, ConsoleColor.Red);
                     }
 
                     if (File.Exists("steamcmd.exe"))
-                        Tools.LogTools.LogEvent("INIT", "steamcmd installed successfully!", false);
+                        Tools.LogTools.LogEvent("INIT/SUCCESS", "steamcmd installed successfully!", false, true, ConsoleColor.Green);
                 }
 
                 if (prompt == DialogResult.No)

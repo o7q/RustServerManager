@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using static RustServerManager.Tools.ShellTools;
 using static RustServerManager.Tools.ProcessTools;
 using static RustServerManager.Server.Wipe.WipeTimerManager;
@@ -11,7 +12,7 @@ namespace RustServerManager.Server.RustDedicated
     {
         public static void StartRustDedicated()
         {
-            Tools.LogTools.LogEvent("SERVER-INFO", "Attempting to start RustDedicated...", false);
+            Tools.LogTools.LogEvent("SERVER/INFO", "Attempting to start RustDedicated...", false, false, ConsoleColor.Gray);
 
             if (IsProcessRunning("RustDedicated") || IsProcessRunning("steamcmd"))
                 return;
@@ -24,12 +25,15 @@ namespace RustServerManager.Server.RustDedicated
             command.FileName = "cmd.exe";
             Process.Start(command);
 
+            SERVER_ALLOWED_TO_AUTO_CRASH_RESTART = true;
             EnableWipeTimer();
         }
 
         public static void StopRustDedicated(bool waitForExit)
         {
-            Tools.LogTools.LogEvent("SERVER-INFO", "Attempting to stop RustDedicated...", false);
+            SERVER_ALLOWED_TO_AUTO_CRASH_RESTART = false;
+
+            Tools.LogTools.LogEvent("SERVER/INFO", "Attempting to stop RustDedicated...", false, false, ConsoleColor.Gray);
             DisableWipeTimer();
 
             if (IsProcessRunning("RustDedicated"))

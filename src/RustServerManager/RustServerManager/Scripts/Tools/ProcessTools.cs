@@ -1,13 +1,14 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Diagnostics;
 
 namespace RustServerManager.Tools
 {
     public static class ProcessTools
     {
-        public static bool IsProcessRunning(string process)
+        public static bool IsProcessRunning(string processName)
         {
-            if (Process.GetProcessesByName(process).Any())
+            if (Process.GetProcessesByName(processName).Any())
                 return true;
             else
                 return false;
@@ -15,6 +16,7 @@ namespace RustServerManager.Tools
 
         public static void WaitForProcess(string processName)
         {
+            Tools.LogTools.LogEvent("PROCESS/INFO", "Waiting for " + processName + "...", false, false, ConsoleColor.Gray);
             Process[] processes = Process.GetProcessesByName(processName);
             foreach (Process process in processes)
             {

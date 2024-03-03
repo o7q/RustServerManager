@@ -14,6 +14,7 @@ using static RustServerManager.Server.Backup.BackupManager;
 using static RustServerManager.Server.RustDedicated.RustDedicatedProcess;
 
 using static RustServerManager.Global;
+using System.Drawing;
 
 namespace RustServerManager
 {
@@ -26,9 +27,11 @@ namespace RustServerManager
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
-            if (File.Exists("RustServerManager.dat"))
+            if (File.Exists("RustServerManager\\RustServerManager.dat"))
             {
-                CONFIG = ReadConfig("RustServerManager.dat");
+                Tools.LogTools.LogEvent("MAIN/INFO", "Config exists.", false, false, ConsoleColor.DarkGray);
+
+                CONFIG = ReadConfig("RustServerManager\\RustServerManager.dat");
 
                 ForceInstallDirTextBox.Text = CONFIG.STEAMCMD_FORCE_INSTALL_DIR;
 
@@ -87,10 +90,10 @@ namespace RustServerManager
             }
             else
             {
+                Tools.LogTools.LogEvent("MAIN/INFO", "No config exists, configuring default settings...", false, false, ConsoleColor.DarkGray);
+
                 CONFIG.WIPE_DATETIME_SHOULD_UPDATE = true;
             }
-
-            Tools.LogTools.LogEvent("MAIN", "RustServerManager Session Started", true);
 
             InitiateWipeTimer();
 
@@ -100,10 +103,12 @@ namespace RustServerManager
             dedicatedServerScanner.Enabled = true;
 
             if (IsProcessRunning("RustDedicated"))
+            {
+                Tools.LogTools.LogEvent("MAIN/INFO", "RustDedicated is currently running, attempting to recover wipe timer...", false, false, ConsoleColor.Gray);
                 EnableWipeTimer();
+            }
         }
 
-        private bool serverAllowedToAutoCrashRestart = false;
         private bool serverAllowedToAutoRestart = true;
         private bool serverIsRunning = false;
         private bool wipeTimerShouldDisable = false;
@@ -127,6 +132,12 @@ namespace RustServerManager
                 serverIsRunning = true;
 
                 wipeTimerShouldDisable = true;
+
+                ServerStatusLabel.Invoke((MethodInvoker)delegate
+                {
+                    ServerStatusLabel.Text = "The server is online!";
+                    ServerStatusLabel.ForeColor = Color.FromArgb(255, 180, 220, 180);
+                });
             }
             else
             {
@@ -137,10 +148,17 @@ namespace RustServerManager
                     DisableWipeTimer();
                     wipeTimerShouldDisable = false;
                 }
+
+                ServerStatusLabel.Invoke((MethodInvoker)delegate
+                {
+                    ServerStatusLabel.Text = "The server is currently offline.";
+                    ServerStatusLabel.ForeColor = Color.FromArgb(255, 180, 180, 180);
+                });
             }
 
-            if (AutoRestartOnCrashCheckBox.Checked && serverAllowedToAutoCrashRestart && !serverIsRunning)
+            if (AutoRestartOnCrashCheckBox.Checked && SERVER_ALLOWED_TO_AUTO_CRASH_RESTART && !serverIsRunning)
             {
+                Tools.LogTools.LogEvent("MAIN/WARN", "Attempting to restart server from close...", false, false, ConsoleColor.Yellow);
                 StartRustDedicated();
             }
 
@@ -180,15 +198,18 @@ namespace RustServerManager
                 return;
             }
 
+            SERVER_ALLOWED_TO_AUTO_CRASH_RESTART = false;
+
             UpdateConfig();
             StartRustDedicated();
-
-            serverAllowedToAutoCrashRestart = true;
         }
 
         private void StopServerButton_Click(object sender, EventArgs e)
         {
-            serverAllowedToAutoCrashRestart = false;
+            if (!IsProcessRunning("RustDedicated") && !IsProcessRunning("steamcmd"))
+            {
+                return;
+            }
 
             StopRustDedicated(false);
         }
@@ -200,18 +221,21 @@ namespace RustServerManager
 
         private void RestartServer()
         {
-            Tools.LogTools.LogEvent("SERVER-INFO", "Attemping to restart RustDedicated...", false);
-
             if (!IsProcessRunning("RustDedicated") && !IsProcessRunning("steamcmd"))
             {
                 return;
             }
 
+
+            Tools.LogTools.LogEvent("MAIN/INFO", "Attemping to restart RustDedicated...", false, false, ConsoleColor.Gray);
+            
+            SERVER_ALLOWED_TO_AUTO_CRASH_RESTART = false;
+
             if (AutoRestartOnCrashCheckBox.Checked)
             {
                 StopRustDedicated(false);
                 InvokeAutoRestartBackup();
-                serverAllowedToAutoCrashRestart = true;
+                SERVER_ALLOWED_TO_AUTO_CRASH_RESTART = true;
             }
             else
             {
@@ -236,37 +260,56 @@ namespace RustServerManager
 
         private void WipeServerButton_Click(object sender, EventArgs e)
         {
-            DialogResult prompt = MessageBox.Show("Are you sure you want to wipe the server now?", "", MessageBoxButtons.YesNo);
+            DialogResult prompt = MessageBox.Show("Are you sure you want to wipe the server now?\nIt will shutdown and you will need to restart it manually.", "", MessageBoxButtons.YesNo);
 
             if (prompt == DialogResult.No)
             {
                 return;
             }
 
-            serverAllowedToAutoCrashRestart = false;
+            InitiateServerWipe(BlueprintsEveryWipeRadioButton.Checked);
+        }
 
-            InitiateServerWipe(BlueprintsEveryWipeRadioButton.Checked, null);
+        private void BackupServerButton_Click(object sender, EventArgs e)
+        {
+            DialogResult prompt = MessageBox.Show("Are you sure you want to backup the server now?\nIt will shutdown and you will need to restart it manually.", "", MessageBoxButtons.YesNo);
+
+            if (prompt == DialogResult.No)
+            {
+                return;
+            }
+
+            Tools.LogTools.LogEvent("MAIN/INFO", "Initiating server backup...", false, false, ConsoleColor.Gray);
+            StopRustDedicated(true);
+            BackupServer();
         }
 
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Tools.LogTools.LogEvent("MAIN/INFO", "Preparing for shutdown...", false, false, ConsoleColor.Gray);
+
             if (IsProcessRunning("RustDedicated") || IsProcessRunning("steamcmd"))
             {
                 DialogResult prompt = MessageBox.Show("A Rust dedicated server is currently running.\nIt is recommended that you stop it before closing RustServerManager.\n\nAre you sure you want to continue?", "", MessageBoxButtons.YesNo);
 
                 if (prompt == DialogResult.No)
                 {
+                    Tools.LogTools.LogEvent("MAIN/INFO", "RustDedicated is running, aborting shutdown...", false, false, ConsoleColor.Gray);
                     e.Cancel = true;
                     return;
                 }
             }
 
             UpdateConfig();
-            WriteConfig(CONFIG, "RustServerManager.dat");
+
+            WriteConfig(CONFIG, "RustServerManager\\RustServerManager.dat");
+            Tools.LogTools.LogEvent("MAIN/INFO", "Shutting down...", false, false, ConsoleColor.Gray);
         }
 
         private void UpdateConfig()
         {
+            Tools.LogTools.LogEvent("MAIN/INFO", "Updating config...", false, false, ConsoleColor.Gray);
+
             CONFIG.STEAMCMD_FORCE_INSTALL_DIR = ForceInstallDirTextBox.Text;
 
             CONFIG.SERVER_IDENTITY = ServerIdentityTextBox.Text;
@@ -376,6 +419,13 @@ namespace RustServerManager
             {
                 ShowConsole();
             }
+        }
+
+        private void ClearLogButton_Click(object sender, EventArgs e)
+        {
+            Console.Clear();
+            LOG_DATETIME = DateTime.Now;
+            Tools.LogTools.LogEvent("MAIN/INFO", "RustServerManager Logging Session Started", true, true, ConsoleColor.DarkGray);
         }
     }
 }

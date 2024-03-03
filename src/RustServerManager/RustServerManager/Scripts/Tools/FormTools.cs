@@ -29,6 +29,8 @@ namespace RustServerManager.Tools
 
         public static string OpenFolderBrowserDialog()
         {
+            Tools.LogTools.LogEvent("FORM/INFO", "Opening folder browser dialog...", false, false, ConsoleColor.Gray);
+
             using (OpenFileDialog selectFolderDialog = new OpenFileDialog())
             {
                 selectFolderDialog.Multiselect = false;

@@ -10,6 +10,7 @@ namespace RustServerManager.Data.Config
     {
         public static void WriteConfig(ConfigBase queueItem, string location)
         {
+            Tools.LogTools.LogEvent("CONFIG/INFO", "Attempting to write config...", false, false, ConsoleColor.Gray);
             var sb = new StringBuilder();
             foreach (var field in typeof(ConfigBase).GetFields())
             {
@@ -24,6 +25,7 @@ namespace RustServerManager.Data.Config
 
         public static ConfigBase ReadConfig(string location)
         {
+            Tools.LogTools.LogEvent("CONFIG/INFO", "Attempting to read config...", false, false, ConsoleColor.Gray);
             ConfigBase config = new ConfigBase();
 
             string configRaw = File.ReadAllText(location);

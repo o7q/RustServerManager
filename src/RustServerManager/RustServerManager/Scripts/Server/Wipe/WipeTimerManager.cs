@@ -13,7 +13,7 @@ namespace RustServerManager.Server.Wipe
 
         private static bool doWipe = false;
 
-        private static bool allowWipeTimerUpdate = false;
+        private static bool allowWipeTimerScan = false;
 
         public static void InitiateWipeTimer()
         {
@@ -21,9 +21,9 @@ namespace RustServerManager.Server.Wipe
             timer.Elapsed += (sender, e) =>
             {
                 // debug console writeline
-                Console.WriteLine("TIMER ELAPSED | allowed: " + allowWipeTimerUpdate);
+                /*Console.WriteLine("TIMER ELAPSED | allowWipeTimerScan: " + allowWipeTimerScan);*/
 
-                if (allowWipeTimerUpdate)
+                if (allowWipeTimerScan)
                 {
                     // calculate the delay duration until the target date and time
                     TimeSpan timeUntilWipe = CONFIG.WIPE_DATETIME - DateTime.Now;
@@ -33,12 +33,12 @@ namespace RustServerManager.Server.Wipe
 
                     if (timeUntilWipe.TotalSeconds < 0)
                     {
-                        Tools.LogTools.LogEvent("WIPE-INFO", "Wipe event triggered", false);
+                        Tools.LogTools.LogEvent("WIPE/INFO", "Wipe event triggered", false, false, ConsoleColor.Gray);
                         doWipe = true;
                     }
                     if (timeUntilForceWipe.TotalSeconds < 0)
                     {
-                        Tools.LogTools.LogEvent("WIPE-INFO", "Forcewipe event triggered", false);
+                        Tools.LogTools.LogEvent("WIPE/INFO", "Forcewipe event triggered", false, false, ConsoleColor.Gray);
                         doWipe = true;
                         wipeBlueprints = true;
                     }
@@ -46,19 +46,16 @@ namespace RustServerManager.Server.Wipe
                     if (doWipe)
                     {
                         doWipe = false;
-                        allowWipeTimerUpdate = false;
+                        allowWipeTimerScan = false;
 
                         if (CONFIG.FORCEWIPE_INTERVAL == "EVERYWIPE")
                         {
                             wipeBlueprints = true;
                         }
 
-                        // wait for wipe to finish before starting the server
-                        InitiateServerWipe(wipeBlueprints, () =>
-                        {
-                            CONFIG.WIPE_DATETIME_SHOULD_UPDATE = true;
-                            StartRustDedicated();
-                        });
+                        InitiateServerWipe(wipeBlueprints);
+                        CONFIG.WIPE_DATETIME_SHOULD_UPDATE = true;
+                        StartRustDedicated();
                     }
                 }
             };
@@ -67,20 +64,20 @@ namespace RustServerManager.Server.Wipe
 
         public static void EnableWipeTimer()
         {
-            Tools.LogTools.LogEvent("WIPE-INFO", "Enabling wipe timer...", false);
+            Tools.LogTools.LogEvent("WIPE/INFO", "Enabling wipe timer...", false, false, ConsoleColor.Gray);
 
             if (CONFIG.WIPE_DATETIME_SHOULD_UPDATE)
                 UpdateNextWipeDate();
 
             CONFIG.WIPE_DATETIME_SHOULD_UPDATE = false;
 
-            allowWipeTimerUpdate = true;
+            allowWipeTimerScan = true;
         }
 
         public static void DisableWipeTimer()
         {
-            Tools.LogTools.LogEvent("WIPE-INFO", "Disabling wipe timer...", false);
-            allowWipeTimerUpdate = false;
+            Tools.LogTools.LogEvent("WIPE/INFO", "Disabling wipe timer...", false, false, ConsoleColor.Gray);
+            allowWipeTimerScan = false;
         }
 
         private static void UpdateNextWipeDate()
@@ -153,8 +150,8 @@ namespace RustServerManager.Server.Wipe
                     break;
             }
 
-            Tools.LogTools.LogEvent("WIPE-INFO", "Set new wipe date to: " + CONFIG.WIPE_DATETIME, false);
-            Tools.LogTools.LogEvent("WIPE-INFO", "Set new forcewipe date to: " + CONFIG.FORCEWIPE_DATETIME, false);
+            Tools.LogTools.LogEvent("WIPE/INFO", "Set new wipe date to: " + CONFIG.WIPE_DATETIME, false, false, ConsoleColor.Cyan);
+            Tools.LogTools.LogEvent("WIPE/INFO", "Set new forcewipe date to: " + CONFIG.FORCEWIPE_DATETIME, false, false, ConsoleColor.Cyan);
         }
 
         private static DateTime DetermineNextOccurenceOfDay(DateTime date, DayOfWeek dayOfWeek)

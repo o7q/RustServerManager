@@ -81,13 +81,15 @@
             this.AutoRestartTimeIdentifierComboBox = new System.Windows.Forms.ComboBox();
             this.AutoRestartTimeSeparatorLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.ServerStatusLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.BackupOnRestartCheckBox = new System.Windows.Forms.CheckBox();
             this.DisplayConsoleCheckBox = new System.Windows.Forms.CheckBox();
+            this.ClearLogButton = new System.Windows.Forms.Button();
+            this.BackupServerButton = new System.Windows.Forms.Button();
             this.TitlebarPanel.SuspendLayout();
             this.ServerSettingsPanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -110,9 +112,9 @@
             this.WipeServerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(10)))), ((int)(((byte)(0)))));
             this.WipeServerButton.Location = new System.Drawing.Point(22, 133);
             this.WipeServerButton.Name = "WipeServerButton";
-            this.WipeServerButton.Size = new System.Drawing.Size(103, 21);
+            this.WipeServerButton.Size = new System.Drawing.Size(60, 21);
             this.WipeServerButton.TabIndex = 0;
-            this.WipeServerButton.Text = "Wipe Server Now";
+            this.WipeServerButton.Text = "Wipe Now";
             this.WipeServerButton.UseVisualStyleBackColor = false;
             this.WipeServerButton.Click += new System.EventHandler(this.WipeServerButton_Click);
             // 
@@ -320,6 +322,7 @@
             // 
             this.ServerSeedTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
             this.ServerSeedTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ServerSeedTextBox.Enabled = false;
             this.ServerSeedTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.ServerSeedTextBox.Location = new System.Drawing.Point(10, 105);
             this.ServerSeedTextBox.Name = "ServerSeedTextBox";
@@ -331,6 +334,8 @@
             // RandomServerSeedCheckBox
             // 
             this.RandomServerSeedCheckBox.AutoSize = true;
+            this.RandomServerSeedCheckBox.Checked = true;
+            this.RandomServerSeedCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.RandomServerSeedCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.RandomServerSeedCheckBox.Location = new System.Drawing.Point(250, 107);
             this.RandomServerSeedCheckBox.Name = "RandomServerSeedCheckBox";
@@ -740,21 +745,21 @@
             this.label5.TabIndex = 65;
             this.label5.Text = "Restart Settings:";
             // 
-            // label6
+            // ServerStatusLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.label6.Location = new System.Drawing.Point(1, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 13);
-            this.label6.TabIndex = 50;
-            this.label6.Text = "Server is not running...";
+            this.ServerStatusLabel.AutoSize = true;
+            this.ServerStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.ServerStatusLabel.Location = new System.Drawing.Point(1, 0);
+            this.ServerStatusLabel.Name = "ServerStatusLabel";
+            this.ServerStatusLabel.Size = new System.Drawing.Size(145, 13);
+            this.ServerStatusLabel.TabIndex = 50;
+            this.ServerStatusLabel.Text = "The server is currently offline.";
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.ServerStatusLabel);
             this.panel3.Location = new System.Drawing.Point(338, 310);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(401, 16);
@@ -792,26 +797,27 @@
             this.panel5.Controls.Add(this.AutoRestartOnCrashCheckBox);
             this.panel5.Location = new System.Drawing.Point(579, 90);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(160, 84);
+            this.panel5.Size = new System.Drawing.Size(160, 82);
             this.panel5.TabIndex = 67;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.BackupServerButton);
             this.panel6.Controls.Add(this.BackupOnRestartCheckBox);
             this.panel6.Controls.Add(this.BackupSettingsLabel);
             this.panel6.Controls.Add(this.BackupOnWipeCheckBox);
-            this.panel6.Location = new System.Drawing.Point(579, 176);
+            this.panel6.Location = new System.Drawing.Point(579, 174);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(160, 74);
+            this.panel6.Size = new System.Drawing.Size(160, 76);
             this.panel6.TabIndex = 68;
             // 
             // BackupOnRestartCheckBox
             // 
             this.BackupOnRestartCheckBox.AutoSize = true;
             this.BackupOnRestartCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.BackupOnRestartCheckBox.Location = new System.Drawing.Point(23, 36);
+            this.BackupOnRestartCheckBox.Location = new System.Drawing.Point(23, 34);
             this.BackupOnRestartCheckBox.Name = "BackupOnRestartCheckBox";
             this.BackupOnRestartCheckBox.Size = new System.Drawing.Size(102, 17);
             this.BackupOnRestartCheckBox.TabIndex = 49;
@@ -825,13 +831,43 @@
             this.DisplayConsoleCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.DisplayConsoleCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DisplayConsoleCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.DisplayConsoleCheckBox.Location = new System.Drawing.Point(632, 71);
+            this.DisplayConsoleCheckBox.Location = new System.Drawing.Point(615, 67);
             this.DisplayConsoleCheckBox.Name = "DisplayConsoleCheckBox";
-            this.DisplayConsoleCheckBox.Size = new System.Drawing.Size(114, 19);
+            this.DisplayConsoleCheckBox.Size = new System.Drawing.Size(90, 19);
             this.DisplayConsoleCheckBox.TabIndex = 69;
-            this.DisplayConsoleCheckBox.Text = "Display Console";
+            this.DisplayConsoleCheckBox.Text = "Display Log";
             this.DisplayConsoleCheckBox.UseVisualStyleBackColor = true;
             this.DisplayConsoleCheckBox.CheckedChanged += new System.EventHandler(this.DisplayConsoleCheckBox_CheckedChanged);
+            // 
+            // ClearLogButton
+            // 
+            this.ClearLogButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.ClearLogButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.ClearLogButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ClearLogButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearLogButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.ClearLogButton.Location = new System.Drawing.Point(702, 65);
+            this.ClearLogButton.Name = "ClearLogButton";
+            this.ClearLogButton.Size = new System.Drawing.Size(37, 24);
+            this.ClearLogButton.TabIndex = 70;
+            this.ClearLogButton.Text = "Clear";
+            this.ClearLogButton.UseVisualStyleBackColor = false;
+            this.ClearLogButton.Click += new System.EventHandler(this.ClearLogButton_Click);
+            // 
+            // BackupServerButton
+            // 
+            this.BackupServerButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.BackupServerButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.BackupServerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BackupServerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackupServerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.BackupServerButton.Location = new System.Drawing.Point(24, 50);
+            this.BackupServerButton.Name = "BackupServerButton";
+            this.BackupServerButton.Size = new System.Drawing.Size(69, 22);
+            this.BackupServerButton.TabIndex = 50;
+            this.BackupServerButton.Text = "Backup now";
+            this.BackupServerButton.UseVisualStyleBackColor = false;
+            this.BackupServerButton.Click += new System.EventHandler(this.BackupServerButton_Click);
             // 
             // MainMenu
             // 
@@ -839,6 +875,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
             this.ClientSize = new System.Drawing.Size(744, 331);
+            this.Controls.Add(this.ClearLogButton);
             this.Controls.Add(this.DisplayConsoleCheckBox);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
@@ -935,13 +972,15 @@
         private System.Windows.Forms.ComboBox AutoRestartTimeIdentifierComboBox;
         private System.Windows.Forms.Label AutoRestartTimeSeparatorLabel;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label ServerStatusLabel;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.CheckBox BackupOnRestartCheckBox;
         private System.Windows.Forms.CheckBox DisplayConsoleCheckBox;
+        private System.Windows.Forms.Button ClearLogButton;
+        private System.Windows.Forms.Button BackupServerButton;
     }
 }
 
