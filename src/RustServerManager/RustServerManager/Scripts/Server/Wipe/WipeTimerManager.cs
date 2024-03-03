@@ -20,11 +20,11 @@ namespace RustServerManager.Server.Wipe
             // create a timer with the delay duration
             timer.Elapsed += (sender, e) =>
             {
+                // debug console writeline
+                Console.WriteLine("TIMER ELAPSED | allowed: " + allowWipeTimerUpdate);
+
                 if (allowWipeTimerUpdate)
                 {
-                    // debug console writeline
-                    /*Console.WriteLine("TIMER UPDATE");*/
-
                     // calculate the delay duration until the target date and time
                     TimeSpan timeUntilWipe = CONFIG.WIPE_DATETIME - DateTime.Now;
                     TimeSpan timeUntilForceWipe = CONFIG.FORCEWIPE_DATETIME - DateTime.Now;

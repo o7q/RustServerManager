@@ -674,9 +674,9 @@
             this.AutoRestartAtTimeCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.AutoRestartAtTimeCheckBox.Location = new System.Drawing.Point(23, 18);
             this.AutoRestartAtTimeCheckBox.Name = "AutoRestartAtTimeCheckBox";
-            this.AutoRestartAtTimeCheckBox.Size = new System.Drawing.Size(100, 17);
+            this.AutoRestartAtTimeCheckBox.Size = new System.Drawing.Size(126, 17);
             this.AutoRestartAtTimeCheckBox.TabIndex = 60;
-            this.AutoRestartAtTimeCheckBox.Text = "Auto Restart at:";
+            this.AutoRestartAtTimeCheckBox.Text = "Auto Restart Daily at:";
             this.AutoRestartAtTimeCheckBox.UseVisualStyleBackColor = true;
             // 
             // AutoRestartHourTextBox

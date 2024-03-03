@@ -252,7 +252,7 @@ namespace RustServerManager
         {
             if (IsProcessRunning("RustDedicated") || IsProcessRunning("steamcmd"))
             {
-                DialogResult prompt = MessageBox.Show("A Rust dedicated server is currently running.\nIt is recommended to stop it before closing RustServerManager.\n\nAre you sure you want to continue?", "", MessageBoxButtons.YesNo);
+                DialogResult prompt = MessageBox.Show("A Rust dedicated server is currently running.\nIt is recommended that you stop it before closing RustServerManager.\n\nAre you sure you want to continue?", "", MessageBoxButtons.YesNo);
 
                 if (prompt == DialogResult.No)
                 {
