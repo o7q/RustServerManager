@@ -55,9 +55,17 @@ namespace RustServerManager.Data.Config
                     case "FORCEWIPE_INTERVAL": config.FORCEWIPE_INTERVAL = configSettingPair[1]; break;
                     case "FORCEWIPE_DATETIME": config.FORCEWIPE_DATETIME = DateTime.Parse(configSettingPair[1]); break;
 
-                    case "BACKUP_BEFORE_WIPE_ENABLE": config.BACKUP_BEFORE_WIPE_ENABLE = bool.Parse(configSettingPair[1]); break;
+                    case "AUTO_RESTART_ENABLE": config.AUTO_RESTART_ENABLE = bool.Parse(configSettingPair[1]); break;
+                    case "AUTO_RESTART_TIME_HOUR": config.AUTO_RESTART_TIME_HOUR = int.Parse(configSettingPair[1]); break;
+                    case "AUTO_RESTART_TIME_MINUTE": config.AUTO_RESTART_TIME_MINUTE = int.Parse(configSettingPair[1]); break;
+                    case "AUTO_RESTART_TIME_IDENTIFIER": config.AUTO_RESTART_TIME_IDENTIFIER = configSettingPair[1]; break;
 
-                    case "SERVER_AUTO_RESTART_CRASH_ENABLE": config.SERVER_AUTO_RESTART_CRASH_ENABLE = bool.Parse(configSettingPair[1]); break;
+                    case "AUTO_RESTART_ON_CRASH_ENABLE": config.AUTO_RESTART_ON_CRASH_ENABLE = bool.Parse(configSettingPair[1]); break;
+
+                    case "BACKUP_BEFORE_WIPE_ENABLE": config.BACKUP_BEFORE_WIPE_ENABLE = bool.Parse(configSettingPair[1]); break;
+                    case "BACKUP_ON_RESTART_ENABLE": config.BACKUP_ON_RESTART_ENABLE = bool.Parse(configSettingPair[1]); break;
+
+                    case "DISPLAY_CONSOLE_ENABLE": config.DISPLAY_CONSOLE_ENABLE = bool.Parse(configSettingPair[1]); break;
                 }
             }
 

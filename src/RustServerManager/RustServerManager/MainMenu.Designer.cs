@@ -87,6 +87,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.BackupOnRestartCheckBox = new System.Windows.Forms.CheckBox();
+            this.DisplayConsoleCheckBox = new System.Windows.Forms.CheckBox();
             this.TitlebarPanel.SuspendLayout();
             this.ServerSettingsPanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -239,11 +240,13 @@
             // WipeIntervalBiWeeklyRadioButton
             // 
             this.WipeIntervalBiWeeklyRadioButton.AutoSize = true;
+            this.WipeIntervalBiWeeklyRadioButton.Checked = true;
             this.WipeIntervalBiWeeklyRadioButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.WipeIntervalBiWeeklyRadioButton.Location = new System.Drawing.Point(4, 35);
             this.WipeIntervalBiWeeklyRadioButton.Name = "WipeIntervalBiWeeklyRadioButton";
             this.WipeIntervalBiWeeklyRadioButton.Size = new System.Drawing.Size(73, 17);
             this.WipeIntervalBiWeeklyRadioButton.TabIndex = 35;
+            this.WipeIntervalBiWeeklyRadioButton.TabStop = true;
             this.WipeIntervalBiWeeklyRadioButton.Text = "Bi-Weekly";
             this.WipeIntervalBiWeeklyRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -294,13 +297,11 @@
             // WipeIntervalWeeklyRadioButton
             // 
             this.WipeIntervalWeeklyRadioButton.AutoSize = true;
-            this.WipeIntervalWeeklyRadioButton.Checked = true;
             this.WipeIntervalWeeklyRadioButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.WipeIntervalWeeklyRadioButton.Location = new System.Drawing.Point(4, 19);
             this.WipeIntervalWeeklyRadioButton.Name = "WipeIntervalWeeklyRadioButton";
             this.WipeIntervalWeeklyRadioButton.Size = new System.Drawing.Size(61, 17);
             this.WipeIntervalWeeklyRadioButton.TabIndex = 34;
-            this.WipeIntervalWeeklyRadioButton.TabStop = true;
             this.WipeIntervalWeeklyRadioButton.Text = "Weekly";
             this.WipeIntervalWeeklyRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -366,6 +367,8 @@
             // AutoRestartOnCrashCheckBox
             // 
             this.AutoRestartOnCrashCheckBox.AutoSize = true;
+            this.AutoRestartOnCrashCheckBox.Checked = true;
+            this.AutoRestartOnCrashCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.AutoRestartOnCrashCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.AutoRestartOnCrashCheckBox.Location = new System.Drawing.Point(23, 59);
             this.AutoRestartOnCrashCheckBox.Name = "AutoRestartOnCrashCheckBox";
@@ -377,12 +380,14 @@
             // BackupOnWipeCheckBox
             // 
             this.BackupOnWipeCheckBox.AutoSize = true;
+            this.BackupOnWipeCheckBox.Checked = true;
+            this.BackupOnWipeCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.BackupOnWipeCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.BackupOnWipeCheckBox.Location = new System.Drawing.Point(23, 18);
             this.BackupOnWipeCheckBox.Name = "BackupOnWipeCheckBox";
-            this.BackupOnWipeCheckBox.Size = new System.Drawing.Size(106, 17);
+            this.BackupOnWipeCheckBox.Size = new System.Drawing.Size(68, 17);
             this.BackupOnWipeCheckBox.TabIndex = 47;
-            this.BackupOnWipeCheckBox.Text = "Backup on Wipe";
+            this.BackupOnWipeCheckBox.Text = "On Wipe";
             this.BackupOnWipeCheckBox.UseVisualStyleBackColor = true;
             // 
             // StopServerButton
@@ -456,7 +461,7 @@
             this.ServerSettingsPanel.Controls.Add(this.ChangesOnWipeLabel);
             this.ServerSettingsPanel.Controls.Add(this.ServerSeedLabel);
             this.ServerSettingsPanel.Controls.Add(this.RandomServerSeedCheckBox);
-            this.ServerSettingsPanel.Location = new System.Drawing.Point(5, 87);
+            this.ServerSettingsPanel.Location = new System.Drawing.Point(5, 90);
             this.ServerSettingsPanel.Name = "ServerSettingsPanel";
             this.ServerSettingsPanel.Size = new System.Drawing.Size(331, 236);
             this.ServerSettingsPanel.TabIndex = 50;
@@ -622,7 +627,7 @@
             this.StartServerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(44)))), ((int)(((byte)(34)))));
             this.StartServerPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.StartServerPanel.Controls.Add(this.StartServerButton);
-            this.StartServerPanel.Location = new System.Drawing.Point(338, 250);
+            this.StartServerPanel.Location = new System.Drawing.Point(338, 253);
             this.StartServerPanel.Name = "StartServerPanel";
             this.StartServerPanel.Size = new System.Drawing.Size(148, 56);
             this.StartServerPanel.TabIndex = 53;
@@ -648,7 +653,7 @@
             this.StopServerPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.StopServerPanel.Controls.Add(this.RestartServerButton);
             this.StopServerPanel.Controls.Add(this.StopServerButton);
-            this.StopServerPanel.Location = new System.Drawing.Point(489, 250);
+            this.StopServerPanel.Location = new System.Drawing.Point(489, 253);
             this.StopServerPanel.Name = "StopServerPanel";
             this.StopServerPanel.Size = new System.Drawing.Size(250, 56);
             this.StopServerPanel.TabIndex = 54;
@@ -684,7 +689,7 @@
             this.AutoRestartHourTextBox.Name = "AutoRestartHourTextBox";
             this.AutoRestartHourTextBox.Size = new System.Drawing.Size(22, 21);
             this.AutoRestartHourTextBox.TabIndex = 61;
-            this.AutoRestartHourTextBox.Text = "2";
+            this.AutoRestartHourTextBox.Text = "12";
             // 
             // AutoRestartMinuteTextBox
             // 
@@ -712,7 +717,7 @@
             this.AutoRestartTimeIdentifierComboBox.Name = "AutoRestartTimeIdentifierComboBox";
             this.AutoRestartTimeIdentifierComboBox.Size = new System.Drawing.Size(40, 21);
             this.AutoRestartTimeIdentifierComboBox.TabIndex = 63;
-            this.AutoRestartTimeIdentifierComboBox.Text = "PM";
+            this.AutoRestartTimeIdentifierComboBox.Text = "AM";
             // 
             // AutoRestartTimeSeparatorLabel
             // 
@@ -750,7 +755,7 @@
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.label6);
-            this.panel3.Location = new System.Drawing.Point(338, 307);
+            this.panel3.Location = new System.Drawing.Point(338, 310);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(401, 16);
             this.panel3.TabIndex = 56;
@@ -769,7 +774,7 @@
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.panel1);
             this.panel4.Controls.Add(this.panel2);
-            this.panel4.Location = new System.Drawing.Point(338, 87);
+            this.panel4.Location = new System.Drawing.Point(338, 90);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(239, 160);
             this.panel4.TabIndex = 66;
@@ -785,7 +790,7 @@
             this.panel5.Controls.Add(this.AutoRestartTimeSeparatorLabel);
             this.panel5.Controls.Add(this.AutoRestartTimeIdentifierComboBox);
             this.panel5.Controls.Add(this.AutoRestartOnCrashCheckBox);
-            this.panel5.Location = new System.Drawing.Point(579, 87);
+            this.panel5.Location = new System.Drawing.Point(579, 90);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(160, 84);
             this.panel5.TabIndex = 67;
@@ -797,7 +802,7 @@
             this.panel6.Controls.Add(this.BackupOnRestartCheckBox);
             this.panel6.Controls.Add(this.BackupSettingsLabel);
             this.panel6.Controls.Add(this.BackupOnWipeCheckBox);
-            this.panel6.Location = new System.Drawing.Point(579, 173);
+            this.panel6.Location = new System.Drawing.Point(579, 176);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(160, 74);
             this.panel6.TabIndex = 68;
@@ -808,17 +813,33 @@
             this.BackupOnRestartCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.BackupOnRestartCheckBox.Location = new System.Drawing.Point(23, 36);
             this.BackupOnRestartCheckBox.Name = "BackupOnRestartCheckBox";
-            this.BackupOnRestartCheckBox.Size = new System.Drawing.Size(115, 17);
+            this.BackupOnRestartCheckBox.Size = new System.Drawing.Size(102, 17);
             this.BackupOnRestartCheckBox.TabIndex = 49;
-            this.BackupOnRestartCheckBox.Text = "Backup on Restart";
+            this.BackupOnRestartCheckBox.Text = "On Auto Restart";
             this.BackupOnRestartCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // DisplayConsoleCheckBox
+            // 
+            this.DisplayConsoleCheckBox.AutoSize = true;
+            this.DisplayConsoleCheckBox.Checked = true;
+            this.DisplayConsoleCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.DisplayConsoleCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DisplayConsoleCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.DisplayConsoleCheckBox.Location = new System.Drawing.Point(632, 71);
+            this.DisplayConsoleCheckBox.Name = "DisplayConsoleCheckBox";
+            this.DisplayConsoleCheckBox.Size = new System.Drawing.Size(114, 19);
+            this.DisplayConsoleCheckBox.TabIndex = 69;
+            this.DisplayConsoleCheckBox.Text = "Display Console";
+            this.DisplayConsoleCheckBox.UseVisualStyleBackColor = true;
+            this.DisplayConsoleCheckBox.CheckedChanged += new System.EventHandler(this.DisplayConsoleCheckBox_CheckedChanged);
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
-            this.ClientSize = new System.Drawing.Size(744, 329);
+            this.ClientSize = new System.Drawing.Size(744, 331);
+            this.Controls.Add(this.DisplayConsoleCheckBox);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -920,6 +941,7 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.CheckBox BackupOnRestartCheckBox;
+        private System.Windows.Forms.CheckBox DisplayConsoleCheckBox;
     }
 }
 

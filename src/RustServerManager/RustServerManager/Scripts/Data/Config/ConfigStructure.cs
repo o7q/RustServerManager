@@ -26,9 +26,18 @@ namespace RustServerManager.Data.Config
             public string FORCEWIPE_INTERVAL;
             public DateTime FORCEWIPE_DATETIME;
 
-            public bool BACKUP_BEFORE_WIPE_ENABLE;
+            public bool AUTO_RESTART_ENABLE;
+            public int AUTO_RESTART_TIME_HOUR;
+            public int AUTO_RESTART_TIME_MINUTE;
+            public string AUTO_RESTART_TIME_IDENTIFIER;
 
-            public bool SERVER_AUTO_RESTART_CRASH_ENABLE;
+            public bool AUTO_RESTART_ON_CRASH_ENABLE;
+
+            public bool BACKUP_BEFORE_WIPE_ENABLE;
+            public bool BACKUP_ON_RESTART_ENABLE;
+
+            public bool DISPLAY_CONSOLE_ENABLE;
+
         }
     }
 }

@@ -7,12 +7,13 @@ using System.Diagnostics;
 using static RustServerManager.Data.Config.ConfigManager;
 using static RustServerManager.Tools.FormTools;
 using static RustServerManager.Tools.ProcessTools;
+using static RustServerManager.Tools.ConsoleTools;
 using static RustServerManager.Server.Wipe.WipeManager;
 using static RustServerManager.Server.Wipe.WipeTimerManager;
+using static RustServerManager.Server.Backup.BackupManager;
 using static RustServerManager.Server.RustDedicated.RustDedicatedProcess;
 
 using static RustServerManager.Global;
-using static RustServerManager.Data.Config.ConfigStructure;
 
 namespace RustServerManager
 {
@@ -72,19 +73,24 @@ namespace RustServerManager
                         break;
                 }
 
-                BackupOnWipeCheckBox.Checked = CONFIG.BACKUP_BEFORE_WIPE_ENABLE;
+                AutoRestartAtTimeCheckBox.Checked = CONFIG.AUTO_RESTART_ENABLE;
+                AutoRestartHourTextBox.Text = CONFIG.AUTO_RESTART_TIME_HOUR.ToString();
+                AutoRestartMinuteTextBox.Text = CONFIG.AUTO_RESTART_TIME_MINUTE.ToString();
+                AutoRestartTimeIdentifierComboBox.Text = CONFIG.AUTO_RESTART_TIME_IDENTIFIER;
 
-                AutoRestartOnCrashCheckBox.Checked = CONFIG.SERVER_AUTO_RESTART_CRASH_ENABLE;
+                AutoRestartOnCrashCheckBox.Checked = CONFIG.AUTO_RESTART_ON_CRASH_ENABLE;
+
+                BackupOnWipeCheckBox.Checked = CONFIG.BACKUP_BEFORE_WIPE_ENABLE;
+                BackupOnRestartCheckBox.Checked = CONFIG.BACKUP_ON_RESTART_ENABLE;
+
+                DisplayConsoleCheckBox.Checked = CONFIG.DISPLAY_CONSOLE_ENABLE;
             }
             else
             {
-                BackupOnWipeCheckBox.Checked = true;
-                AutoRestartOnCrashCheckBox.Checked = true;
-
                 CONFIG.WIPE_DATETIME_SHOULD_UPDATE = true;
             }
 
-            Tools.LogTools.LogEvent("INIT", "RustServerManager Session Started", true);
+            Tools.LogTools.LogEvent("MAIN", "RustServerManager Session Started", true);
 
             InitiateWipeTimer();
 
@@ -97,7 +103,8 @@ namespace RustServerManager
                 EnableWipeTimer();
         }
 
-        private bool serverShouldAutoStart = false;
+        private bool serverAllowedToAutoCrashRestart = false;
+        private bool serverAllowedToAutoRestart = true;
         private bool serverIsRunning = false;
         private bool wipeTimerShouldDisable = false;
         private void ScanDedicatedServer(object source, ElapsedEventArgs e)
@@ -132,9 +139,36 @@ namespace RustServerManager
                 }
             }
 
-            if (AutoRestartOnCrashCheckBox.Checked && serverShouldAutoStart && !serverIsRunning)
+            if (AutoRestartOnCrashCheckBox.Checked && serverAllowedToAutoCrashRestart && !serverIsRunning)
             {
                 StartRustDedicated();
+            }
+
+            DateTime currentTime = DateTime.Now;
+            DateTime compareTime = new DateTime(currentTime.Year, currentTime.Month, currentTime.Day);
+
+            int hour = 0;
+            int minute = 0;
+
+            Invoke((MethodInvoker)delegate
+            {
+                int.TryParse(AutoRestartHourTextBox.Text, out hour);
+                int.TryParse(AutoRestartMinuteTextBox.Text, out minute);
+
+                compareTime = compareTime.AddHours(hour % 12 + (AutoRestartTimeIdentifierComboBox.Text == "PM" ? 12 : 0)).AddMinutes(minute);
+            });
+
+            if (currentTime.Hour == compareTime.Hour && currentTime.Minute == compareTime.Minute)
+            {
+                if (AutoRestartAtTimeCheckBox.Checked && serverAllowedToAutoRestart)
+                {
+                    serverAllowedToAutoRestart = false;
+                    RestartServer();
+                }
+            }
+            else
+            {
+                serverAllowedToAutoRestart = true;
             }
         }
 
@@ -149,17 +183,22 @@ namespace RustServerManager
             UpdateConfig();
             StartRustDedicated();
 
-            serverShouldAutoStart = true;
+            serverAllowedToAutoCrashRestart = true;
         }
 
         private void StopServerButton_Click(object sender, EventArgs e)
         {
-            serverShouldAutoStart = false;
+            serverAllowedToAutoCrashRestart = false;
 
             StopRustDedicated(false);
         }
 
         private void RestartServerButton_Click(object sender, EventArgs e)
+        {
+            RestartServer();
+        }
+
+        private void RestartServer()
         {
             Tools.LogTools.LogEvent("SERVER-INFO", "Attemping to restart RustDedicated...", false);
 
@@ -171,13 +210,28 @@ namespace RustServerManager
             if (AutoRestartOnCrashCheckBox.Checked)
             {
                 StopRustDedicated(false);
-                serverShouldAutoStart = true;
+                InvokeAutoRestartBackup();
+                serverAllowedToAutoCrashRestart = true;
             }
             else
             {
                 StopRustDedicated(true);
+                InvokeAutoRestartBackup();
                 StartRustDedicated();
             }
+        }
+
+        private void InvokeAutoRestartBackup()
+        {
+            bool check = false;
+            BackupOnRestartCheckBox.Invoke((MethodInvoker)delegate
+            {
+                if (BackupOnRestartCheckBox.Checked)
+                    check = true;
+            });
+
+            if (check)
+                BackupServer();
         }
 
         private void WipeServerButton_Click(object sender, EventArgs e)
@@ -189,9 +243,9 @@ namespace RustServerManager
                 return;
             }
 
-            serverShouldAutoStart = false;
+            serverAllowedToAutoCrashRestart = false;
 
-            InitiateServerWipe(true, null);
+            InitiateServerWipe(BlueprintsEveryWipeRadioButton.Checked, null);
         }
 
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
@@ -252,9 +306,17 @@ namespace RustServerManager
                 CONFIG.FORCEWIPE_INTERVAL = "NEVER";
             }
 
-            CONFIG.BACKUP_BEFORE_WIPE_ENABLE = BackupOnWipeCheckBox.Checked;
+            CONFIG.AUTO_RESTART_ENABLE = AutoRestartAtTimeCheckBox.Checked;
+            int.TryParse(AutoRestartHourTextBox.Text, out CONFIG.AUTO_RESTART_TIME_HOUR);
+            int.TryParse(AutoRestartMinuteTextBox.Text, out CONFIG.AUTO_RESTART_TIME_MINUTE);
+            CONFIG.AUTO_RESTART_TIME_IDENTIFIER = AutoRestartTimeIdentifierComboBox.Text;
 
-            CONFIG.SERVER_AUTO_RESTART_CRASH_ENABLE = AutoRestartOnCrashCheckBox.Checked;
+            CONFIG.AUTO_RESTART_ON_CRASH_ENABLE = AutoRestartOnCrashCheckBox.Checked;
+
+            CONFIG.BACKUP_BEFORE_WIPE_ENABLE = BackupOnWipeCheckBox.Checked;
+            CONFIG.BACKUP_ON_RESTART_ENABLE = BackupOnRestartCheckBox.Checked;
+
+            CONFIG.DISPLAY_CONSOLE_ENABLE = DisplayConsoleCheckBox.Checked;
         }
 
         private void ForceInstallDirBrowseButton_Click(object sender, EventArgs e)
@@ -302,6 +364,18 @@ namespace RustServerManager
         private void TitlebarPanel_MouseDown(object sender, MouseEventArgs e)
         {
             MoveForm(Handle, e);
+        }
+
+        private void DisplayConsoleCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (DisplayConsoleCheckBox.Checked)
+            {
+                HideConsole();
+            }
+            else
+            {
+                ShowConsole();
+            }
         }
     }
 }

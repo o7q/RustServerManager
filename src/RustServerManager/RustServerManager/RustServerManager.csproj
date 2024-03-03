@@ -64,8 +64,10 @@
     <Compile Include="Scripts\Data\Config\ConfigManager.cs" />
     <Compile Include="Scripts\Data\Config\ConfigStructure.cs" />
     <Compile Include="Scripts\Global.cs" />
+    <Compile Include="Scripts\Server\Backup\BackupManager.cs" />
     <Compile Include="Scripts\Server\Wipe\WipeManager.cs" />
     <Compile Include="Scripts\Server\Wipe\WipeTimerManager.cs" />
+    <Compile Include="Scripts\Tools\ConsoleTools.cs" />
     <Compile Include="Scripts\Tools\FormTools.cs" />
     <Compile Include="Scripts\Tools\LogTools.cs" />
     <Compile Include="Scripts\Tools\ProcessTools.cs" />
