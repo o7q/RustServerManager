@@ -37,7 +37,7 @@
             this.ServerInstallDirectoryLabel = new System.Windows.Forms.Label();
             this.WipeHourTextBox = new System.Windows.Forms.TextBox();
             this.WipeMinuteTextBox = new System.Windows.Forms.TextBox();
-            this.WipeDayLabel = new System.Windows.Forms.Label();
+            this.WipeSettingsLabel = new System.Windows.Forms.Label();
             this.WipeTimeIdentifierComboBox = new System.Windows.Forms.ComboBox();
             this.WipeDayTimeSeparatorLabel = new System.Windows.Forms.Label();
             this.WipeIntervalBiWeeklyRadioButton = new System.Windows.Forms.RadioButton();
@@ -60,14 +60,14 @@
             this.ServerSettingsPanel = new System.Windows.Forms.Panel();
             this.OpenServerPathButton = new System.Windows.Forms.Button();
             this.ForceInstallDirBrowseButton = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.WipeBlueprintsPanel = new System.Windows.Forms.Panel();
             this.BlueprintsNeverRadioButton = new System.Windows.Forms.RadioButton();
-            this.label4 = new System.Windows.Forms.Label();
+            this.WipeBlueprintsLabel = new System.Windows.Forms.Label();
             this.BlueprintsForcewipeRadioButton = new System.Windows.Forms.RadioButton();
             this.BlueprintsEveryWipeRadioButton = new System.Windows.Forms.RadioButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.WipeIntervalPanel = new System.Windows.Forms.Panel();
+            this.WipeIntervalLabel = new System.Windows.Forms.Label();
+            this.WipeDayLabel = new System.Windows.Forms.Label();
             this.BackupSettingsLabel = new System.Windows.Forms.Label();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.TitleVersionLabel = new System.Windows.Forms.Label();
@@ -80,27 +80,27 @@
             this.AutoRestartMinuteTextBox = new System.Windows.Forms.TextBox();
             this.AutoRestartTimeIdentifierComboBox = new System.Windows.Forms.ComboBox();
             this.AutoRestartTimeSeparatorLabel = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.RestartSettingsLabel = new System.Windows.Forms.Label();
             this.ServerStatusLabel = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.ServerStatusPanel = new System.Windows.Forms.Panel();
+            this.WipeSettingsPanel = new System.Windows.Forms.Panel();
+            this.RestartSettingsPanel = new System.Windows.Forms.Panel();
+            this.BackupSettingsPanel = new System.Windows.Forms.Panel();
+            this.BackupServerButton = new System.Windows.Forms.Button();
             this.BackupOnRestartCheckBox = new System.Windows.Forms.CheckBox();
             this.DisplayConsoleCheckBox = new System.Windows.Forms.CheckBox();
             this.ClearLogButton = new System.Windows.Forms.Button();
-            this.BackupServerButton = new System.Windows.Forms.Button();
             this.TitlebarPanel.SuspendLayout();
             this.ServerSettingsPanel.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.WipeBlueprintsPanel.SuspendLayout();
+            this.WipeIntervalPanel.SuspendLayout();
             this.StartServerPanel.SuspendLayout();
             this.StopServerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TitleIconPictureBox)).BeginInit();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
+            this.ServerStatusPanel.SuspendLayout();
+            this.WipeSettingsPanel.SuspendLayout();
+            this.RestartSettingsPanel.SuspendLayout();
+            this.BackupSettingsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // WipeServerButton
@@ -113,7 +113,7 @@
             this.WipeServerButton.Location = new System.Drawing.Point(22, 133);
             this.WipeServerButton.Name = "WipeServerButton";
             this.WipeServerButton.Size = new System.Drawing.Size(60, 21);
-            this.WipeServerButton.TabIndex = 0;
+            this.WipeServerButton.TabIndex = 20;
             this.WipeServerButton.Text = "Wipe Now";
             this.WipeServerButton.UseVisualStyleBackColor = false;
             this.WipeServerButton.Click += new System.EventHandler(this.WipeServerButton_Click);
@@ -128,7 +128,7 @@
             this.StartServerButton.Location = new System.Drawing.Point(5, 5);
             this.StartServerButton.Name = "StartServerButton";
             this.StartServerButton.Size = new System.Drawing.Size(136, 44);
-            this.StartServerButton.TabIndex = 1;
+            this.StartServerButton.TabIndex = 29;
             this.StartServerButton.Text = "Start Server";
             this.StartServerButton.UseVisualStyleBackColor = false;
             this.StartServerButton.Click += new System.EventHandler(this.StartServerButton_Click);
@@ -141,7 +141,7 @@
             this.ServerArgumentsTextBox.Location = new System.Drawing.Point(10, 160);
             this.ServerArgumentsTextBox.Name = "ServerArgumentsTextBox";
             this.ServerArgumentsTextBox.Size = new System.Drawing.Size(312, 66);
-            this.ServerArgumentsTextBox.TabIndex = 17;
+            this.ServerArgumentsTextBox.TabIndex = 8;
             this.ServerArgumentsTextBox.Text = "+server.level \"Procedural Map\" +server.worldsize 4000";
             // 
             // ServerArgumentsLabel
@@ -152,7 +152,7 @@
             this.ServerArgumentsLabel.Location = new System.Drawing.Point(7, 143);
             this.ServerArgumentsLabel.Name = "ServerArgumentsLabel";
             this.ServerArgumentsLabel.Size = new System.Drawing.Size(107, 15);
-            this.ServerArgumentsLabel.TabIndex = 18;
+            this.ServerArgumentsLabel.TabIndex = 0;
             this.ServerArgumentsLabel.Text = "Server Arguments:";
             // 
             // ForceInstallDirTextBox
@@ -163,7 +163,7 @@
             this.ForceInstallDirTextBox.Location = new System.Drawing.Point(10, 26);
             this.ForceInstallDirTextBox.Name = "ForceInstallDirTextBox";
             this.ForceInstallDirTextBox.Size = new System.Drawing.Size(293, 20);
-            this.ForceInstallDirTextBox.TabIndex = 19;
+            this.ForceInstallDirTextBox.TabIndex = 2;
             this.ForceInstallDirTextBox.Text = "rustserver";
             // 
             // ServerInstallDirectoryLabel
@@ -174,7 +174,7 @@
             this.ServerInstallDirectoryLabel.Location = new System.Drawing.Point(6, 9);
             this.ServerInstallDirectoryLabel.Name = "ServerInstallDirectoryLabel";
             this.ServerInstallDirectoryLabel.Size = new System.Drawing.Size(236, 15);
-            this.ServerInstallDirectoryLabel.TabIndex = 20;
+            this.ServerInstallDirectoryLabel.TabIndex = 0;
             this.ServerInstallDirectoryLabel.Text = "Server Install Directory (+force_install_dir):";
             // 
             // WipeHourTextBox
@@ -186,7 +186,7 @@
             this.WipeHourTextBox.Location = new System.Drawing.Point(86, 18);
             this.WipeHourTextBox.Name = "WipeHourTextBox";
             this.WipeHourTextBox.Size = new System.Drawing.Size(22, 21);
-            this.WipeHourTextBox.TabIndex = 23;
+            this.WipeHourTextBox.TabIndex = 10;
             this.WipeHourTextBox.Text = "2";
             // 
             // WipeMinuteTextBox
@@ -198,19 +198,19 @@
             this.WipeMinuteTextBox.Location = new System.Drawing.Point(120, 18);
             this.WipeMinuteTextBox.Name = "WipeMinuteTextBox";
             this.WipeMinuteTextBox.Size = new System.Drawing.Size(29, 21);
-            this.WipeMinuteTextBox.TabIndex = 24;
+            this.WipeMinuteTextBox.TabIndex = 11;
             this.WipeMinuteTextBox.Text = "00";
             // 
-            // WipeDayLabel
+            // WipeSettingsLabel
             // 
-            this.WipeDayLabel.AutoSize = true;
-            this.WipeDayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.WipeDayLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.WipeDayLabel.Location = new System.Drawing.Point(1, 2);
-            this.WipeDayLabel.Name = "WipeDayLabel";
-            this.WipeDayLabel.Size = new System.Drawing.Size(85, 15);
-            this.WipeDayLabel.TabIndex = 25;
-            this.WipeDayLabel.Text = "Wipe Settings:";
+            this.WipeSettingsLabel.AutoSize = true;
+            this.WipeSettingsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.WipeSettingsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.WipeSettingsLabel.Location = new System.Drawing.Point(1, 2);
+            this.WipeSettingsLabel.Name = "WipeSettingsLabel";
+            this.WipeSettingsLabel.Size = new System.Drawing.Size(85, 15);
+            this.WipeSettingsLabel.TabIndex = 0;
+            this.WipeSettingsLabel.Text = "Wipe Settings:";
             // 
             // WipeTimeIdentifierComboBox
             // 
@@ -225,7 +225,7 @@
             this.WipeTimeIdentifierComboBox.Location = new System.Drawing.Point(151, 18);
             this.WipeTimeIdentifierComboBox.Name = "WipeTimeIdentifierComboBox";
             this.WipeTimeIdentifierComboBox.Size = new System.Drawing.Size(40, 21);
-            this.WipeTimeIdentifierComboBox.TabIndex = 28;
+            this.WipeTimeIdentifierComboBox.TabIndex = 12;
             this.WipeTimeIdentifierComboBox.Text = "PM";
             // 
             // WipeDayTimeSeparatorLabel
@@ -236,7 +236,7 @@
             this.WipeDayTimeSeparatorLabel.Location = new System.Drawing.Point(108, 20);
             this.WipeDayTimeSeparatorLabel.Name = "WipeDayTimeSeparatorLabel";
             this.WipeDayTimeSeparatorLabel.Size = new System.Drawing.Size(11, 16);
-            this.WipeDayTimeSeparatorLabel.TabIndex = 29;
+            this.WipeDayTimeSeparatorLabel.TabIndex = 0;
             this.WipeDayTimeSeparatorLabel.Text = ":";
             // 
             // WipeIntervalBiWeeklyRadioButton
@@ -244,10 +244,10 @@
             this.WipeIntervalBiWeeklyRadioButton.AutoSize = true;
             this.WipeIntervalBiWeeklyRadioButton.Checked = true;
             this.WipeIntervalBiWeeklyRadioButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.WipeIntervalBiWeeklyRadioButton.Location = new System.Drawing.Point(4, 35);
+            this.WipeIntervalBiWeeklyRadioButton.Location = new System.Drawing.Point(5, 35);
             this.WipeIntervalBiWeeklyRadioButton.Name = "WipeIntervalBiWeeklyRadioButton";
             this.WipeIntervalBiWeeklyRadioButton.Size = new System.Drawing.Size(73, 17);
-            this.WipeIntervalBiWeeklyRadioButton.TabIndex = 35;
+            this.WipeIntervalBiWeeklyRadioButton.TabIndex = 15;
             this.WipeIntervalBiWeeklyRadioButton.TabStop = true;
             this.WipeIntervalBiWeeklyRadioButton.Text = "Bi-Weekly";
             this.WipeIntervalBiWeeklyRadioButton.UseVisualStyleBackColor = true;
@@ -256,10 +256,10 @@
             // 
             this.WipeIntervalMonthlyRadioButton.AutoSize = true;
             this.WipeIntervalMonthlyRadioButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.WipeIntervalMonthlyRadioButton.Location = new System.Drawing.Point(4, 51);
+            this.WipeIntervalMonthlyRadioButton.Location = new System.Drawing.Point(5, 51);
             this.WipeIntervalMonthlyRadioButton.Name = "WipeIntervalMonthlyRadioButton";
             this.WipeIntervalMonthlyRadioButton.Size = new System.Drawing.Size(62, 17);
-            this.WipeIntervalMonthlyRadioButton.TabIndex = 36;
+            this.WipeIntervalMonthlyRadioButton.TabIndex = 16;
             this.WipeIntervalMonthlyRadioButton.Text = "Monthly";
             this.WipeIntervalMonthlyRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -271,7 +271,7 @@
             this.LocalServerIdentityLabel.Location = new System.Drawing.Point(6, 50);
             this.LocalServerIdentityLabel.Name = "LocalServerIdentityLabel";
             this.LocalServerIdentityLabel.Size = new System.Drawing.Size(211, 15);
-            this.LocalServerIdentityLabel.TabIndex = 38;
+            this.LocalServerIdentityLabel.TabIndex = 0;
             this.LocalServerIdentityLabel.Text = "Local Server Identity (+server.identity):";
             // 
             // ServerIdentityTextBox
@@ -282,7 +282,7 @@
             this.ServerIdentityTextBox.Location = new System.Drawing.Point(10, 67);
             this.ServerIdentityTextBox.Name = "ServerIdentityTextBox";
             this.ServerIdentityTextBox.Size = new System.Drawing.Size(293, 20);
-            this.ServerIdentityTextBox.TabIndex = 37;
+            this.ServerIdentityTextBox.TabIndex = 4;
             this.ServerIdentityTextBox.Text = "server";
             // 
             // StartFromSundayCheckBox
@@ -292,7 +292,7 @@
             this.StartFromSundayCheckBox.Location = new System.Drawing.Point(24, 39);
             this.StartFromSundayCheckBox.Name = "StartFromSundayCheckBox";
             this.StartFromSundayCheckBox.Size = new System.Drawing.Size(133, 17);
-            this.StartFromSundayCheckBox.TabIndex = 39;
+            this.StartFromSundayCheckBox.TabIndex = 13;
             this.StartFromSundayCheckBox.Text = "Begin from Week Start";
             this.StartFromSundayCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -300,10 +300,10 @@
             // 
             this.WipeIntervalWeeklyRadioButton.AutoSize = true;
             this.WipeIntervalWeeklyRadioButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.WipeIntervalWeeklyRadioButton.Location = new System.Drawing.Point(4, 19);
+            this.WipeIntervalWeeklyRadioButton.Location = new System.Drawing.Point(5, 19);
             this.WipeIntervalWeeklyRadioButton.Name = "WipeIntervalWeeklyRadioButton";
             this.WipeIntervalWeeklyRadioButton.Size = new System.Drawing.Size(61, 17);
-            this.WipeIntervalWeeklyRadioButton.TabIndex = 34;
+            this.WipeIntervalWeeklyRadioButton.TabIndex = 14;
             this.WipeIntervalWeeklyRadioButton.Text = "Weekly";
             this.WipeIntervalWeeklyRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -315,7 +315,7 @@
             this.ServerSeedLabel.Location = new System.Drawing.Point(6, 89);
             this.ServerSeedLabel.Name = "ServerSeedLabel";
             this.ServerSeedLabel.Size = new System.Drawing.Size(158, 15);
-            this.ServerSeedLabel.TabIndex = 42;
+            this.ServerSeedLabel.TabIndex = 0;
             this.ServerSeedLabel.Text = "Server Seed (+server.seed):";
             // 
             // ServerSeedTextBox
@@ -327,7 +327,7 @@
             this.ServerSeedTextBox.Location = new System.Drawing.Point(10, 105);
             this.ServerSeedTextBox.Name = "ServerSeedTextBox";
             this.ServerSeedTextBox.Size = new System.Drawing.Size(237, 20);
-            this.ServerSeedTextBox.TabIndex = 41;
+            this.ServerSeedTextBox.TabIndex = 6;
             this.ServerSeedTextBox.Text = "12345678";
             this.ServerSeedTextBox.TextChanged += new System.EventHandler(this.ServerSeedTextBox_TextChanged);
             // 
@@ -340,7 +340,7 @@
             this.RandomServerSeedCheckBox.Location = new System.Drawing.Point(250, 107);
             this.RandomServerSeedCheckBox.Name = "RandomServerSeedCheckBox";
             this.RandomServerSeedCheckBox.Size = new System.Drawing.Size(66, 17);
-            this.RandomServerSeedCheckBox.TabIndex = 43;
+            this.RandomServerSeedCheckBox.TabIndex = 7;
             this.RandomServerSeedCheckBox.Text = "Random";
             this.RandomServerSeedCheckBox.UseVisualStyleBackColor = true;
             this.RandomServerSeedCheckBox.CheckedChanged += new System.EventHandler(this.RandomServerSeedCheckBox_CheckedChanged);
@@ -353,7 +353,7 @@
             this.ChangesOnWipeLabel.Location = new System.Drawing.Point(247, 121);
             this.ChangesOnWipeLabel.Name = "ChangesOnWipeLabel";
             this.ChangesOnWipeLabel.Size = new System.Drawing.Size(80, 12);
-            this.ChangesOnWipeLabel.TabIndex = 44;
+            this.ChangesOnWipeLabel.TabIndex = 0;
             this.ChangesOnWipeLabel.Text = "(changes on wipe)";
             // 
             // CurrentServerSeedLabel
@@ -365,7 +365,7 @@
             this.CurrentServerSeedLabel.Location = new System.Drawing.Point(8, 125);
             this.CurrentServerSeedLabel.Name = "CurrentServerSeedLabel";
             this.CurrentServerSeedLabel.Size = new System.Drawing.Size(104, 12);
-            this.CurrentServerSeedLabel.TabIndex = 45;
+            this.CurrentServerSeedLabel.TabIndex = 0;
             this.CurrentServerSeedLabel.Text = "Current Seed: 12345678";
             this.CurrentServerSeedLabel.Click += new System.EventHandler(this.CurrentServerSeedLabel_Click);
             // 
@@ -378,7 +378,7 @@
             this.AutoRestartOnCrashCheckBox.Location = new System.Drawing.Point(23, 59);
             this.AutoRestartOnCrashCheckBox.Name = "AutoRestartOnCrashCheckBox";
             this.AutoRestartOnCrashCheckBox.Size = new System.Drawing.Size(130, 17);
-            this.AutoRestartOnCrashCheckBox.TabIndex = 46;
+            this.AutoRestartOnCrashCheckBox.TabIndex = 25;
             this.AutoRestartOnCrashCheckBox.Text = "Auto Restart on Crash";
             this.AutoRestartOnCrashCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -391,7 +391,7 @@
             this.BackupOnWipeCheckBox.Location = new System.Drawing.Point(23, 18);
             this.BackupOnWipeCheckBox.Name = "BackupOnWipeCheckBox";
             this.BackupOnWipeCheckBox.Size = new System.Drawing.Size(68, 17);
-            this.BackupOnWipeCheckBox.TabIndex = 47;
+            this.BackupOnWipeCheckBox.TabIndex = 26;
             this.BackupOnWipeCheckBox.Text = "On Wipe";
             this.BackupOnWipeCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -405,7 +405,7 @@
             this.StopServerButton.Location = new System.Drawing.Point(5, 5);
             this.StopServerButton.Name = "StopServerButton";
             this.StopServerButton.Size = new System.Drawing.Size(114, 44);
-            this.StopServerButton.TabIndex = 48;
+            this.StopServerButton.TabIndex = 30;
             this.StopServerButton.Text = "Stop Server";
             this.StopServerButton.UseVisualStyleBackColor = false;
             this.StopServerButton.Click += new System.EventHandler(this.StopServerButton_Click);
@@ -418,7 +418,7 @@
             this.TitlebarPanel.Location = new System.Drawing.Point(-3, -3);
             this.TitlebarPanel.Name = "TitlebarPanel";
             this.TitlebarPanel.Size = new System.Drawing.Size(750, 33);
-            this.TitlebarPanel.TabIndex = 49;
+            this.TitlebarPanel.TabIndex = 0;
             this.TitlebarPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TitlebarPanel_MouseDown);
             // 
             // MinimizeButton
@@ -430,7 +430,7 @@
             this.MinimizeButton.Location = new System.Drawing.Point(687, 3);
             this.MinimizeButton.Name = "MinimizeButton";
             this.MinimizeButton.Size = new System.Drawing.Size(30, 30);
-            this.MinimizeButton.TabIndex = 1;
+            this.MinimizeButton.TabIndex = 0;
             this.MinimizeButton.Text = "_";
             this.MinimizeButton.UseVisualStyleBackColor = false;
             this.MinimizeButton.Click += new System.EventHandler(this.MinimizeButton_Click);
@@ -444,7 +444,7 @@
             this.CloseButton.Location = new System.Drawing.Point(717, 3);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(30, 30);
-            this.CloseButton.TabIndex = 0;
+            this.CloseButton.TabIndex = 1;
             this.CloseButton.Text = "x";
             this.CloseButton.UseVisualStyleBackColor = false;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
@@ -469,7 +469,7 @@
             this.ServerSettingsPanel.Location = new System.Drawing.Point(5, 90);
             this.ServerSettingsPanel.Name = "ServerSettingsPanel";
             this.ServerSettingsPanel.Size = new System.Drawing.Size(331, 236);
-            this.ServerSettingsPanel.TabIndex = 50;
+            this.ServerSettingsPanel.TabIndex = 2;
             // 
             // OpenServerPathButton
             // 
@@ -483,7 +483,7 @@
             this.OpenServerPathButton.Location = new System.Drawing.Point(302, 67);
             this.OpenServerPathButton.Name = "OpenServerPathButton";
             this.OpenServerPathButton.Size = new System.Drawing.Size(20, 20);
-            this.OpenServerPathButton.TabIndex = 46;
+            this.OpenServerPathButton.TabIndex = 5;
             this.OpenServerPathButton.UseVisualStyleBackColor = false;
             this.OpenServerPathButton.Click += new System.EventHandler(this.OpenServerPathButton_Click);
             // 
@@ -499,21 +499,21 @@
             this.ForceInstallDirBrowseButton.Location = new System.Drawing.Point(302, 26);
             this.ForceInstallDirBrowseButton.Name = "ForceInstallDirBrowseButton";
             this.ForceInstallDirBrowseButton.Size = new System.Drawing.Size(20, 20);
-            this.ForceInstallDirBrowseButton.TabIndex = 40;
+            this.ForceInstallDirBrowseButton.TabIndex = 3;
             this.ForceInstallDirBrowseButton.UseVisualStyleBackColor = false;
             this.ForceInstallDirBrowseButton.Click += new System.EventHandler(this.ForceInstallDirBrowseButton_Click);
             // 
-            // panel2
+            // WipeBlueprintsPanel
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.BlueprintsNeverRadioButton);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.BlueprintsForcewipeRadioButton);
-            this.panel2.Controls.Add(this.BlueprintsEveryWipeRadioButton);
-            this.panel2.Location = new System.Drawing.Point(110, 57);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(119, 74);
-            this.panel2.TabIndex = 59;
+            this.WipeBlueprintsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.WipeBlueprintsPanel.Controls.Add(this.BlueprintsNeverRadioButton);
+            this.WipeBlueprintsPanel.Controls.Add(this.WipeBlueprintsLabel);
+            this.WipeBlueprintsPanel.Controls.Add(this.BlueprintsForcewipeRadioButton);
+            this.WipeBlueprintsPanel.Controls.Add(this.BlueprintsEveryWipeRadioButton);
+            this.WipeBlueprintsPanel.Location = new System.Drawing.Point(110, 57);
+            this.WipeBlueprintsPanel.Name = "WipeBlueprintsPanel";
+            this.WipeBlueprintsPanel.Size = new System.Drawing.Size(119, 74);
+            this.WipeBlueprintsPanel.TabIndex = 17;
             // 
             // BlueprintsNeverRadioButton
             // 
@@ -522,20 +522,20 @@
             this.BlueprintsNeverRadioButton.Location = new System.Drawing.Point(5, 51);
             this.BlueprintsNeverRadioButton.Name = "BlueprintsNeverRadioButton";
             this.BlueprintsNeverRadioButton.Size = new System.Drawing.Size(54, 17);
-            this.BlueprintsNeverRadioButton.TabIndex = 58;
+            this.BlueprintsNeverRadioButton.TabIndex = 19;
             this.BlueprintsNeverRadioButton.Text = "Never";
             this.BlueprintsNeverRadioButton.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // WipeBlueprintsLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.label4.Location = new System.Drawing.Point(3, 2);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 15);
-            this.label4.TabIndex = 55;
-            this.label4.Text = "Wipe Blueprints:";
+            this.WipeBlueprintsLabel.AutoSize = true;
+            this.WipeBlueprintsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.WipeBlueprintsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.WipeBlueprintsLabel.Location = new System.Drawing.Point(3, 2);
+            this.WipeBlueprintsLabel.Name = "WipeBlueprintsLabel";
+            this.WipeBlueprintsLabel.Size = new System.Drawing.Size(96, 15);
+            this.WipeBlueprintsLabel.TabIndex = 0;
+            this.WipeBlueprintsLabel.Text = "Wipe Blueprints:";
             // 
             // BlueprintsForcewipeRadioButton
             // 
@@ -545,7 +545,7 @@
             this.BlueprintsForcewipeRadioButton.Location = new System.Drawing.Point(5, 19);
             this.BlueprintsForcewipeRadioButton.Name = "BlueprintsForcewipeRadioButton";
             this.BlueprintsForcewipeRadioButton.Size = new System.Drawing.Size(74, 17);
-            this.BlueprintsForcewipeRadioButton.TabIndex = 56;
+            this.BlueprintsForcewipeRadioButton.TabIndex = 17;
             this.BlueprintsForcewipeRadioButton.TabStop = true;
             this.BlueprintsForcewipeRadioButton.Text = "Forcewipe";
             this.BlueprintsForcewipeRadioButton.UseVisualStyleBackColor = true;
@@ -557,43 +557,43 @@
             this.BlueprintsEveryWipeRadioButton.Location = new System.Drawing.Point(5, 35);
             this.BlueprintsEveryWipeRadioButton.Name = "BlueprintsEveryWipeRadioButton";
             this.BlueprintsEveryWipeRadioButton.Size = new System.Drawing.Size(80, 17);
-            this.BlueprintsEveryWipeRadioButton.TabIndex = 57;
+            this.BlueprintsEveryWipeRadioButton.TabIndex = 18;
             this.BlueprintsEveryWipeRadioButton.Text = "Every Wipe";
             this.BlueprintsEveryWipeRadioButton.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // WipeIntervalPanel
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.WipeIntervalBiWeeklyRadioButton);
-            this.panel1.Controls.Add(this.WipeIntervalWeeklyRadioButton);
-            this.panel1.Controls.Add(this.WipeIntervalMonthlyRadioButton);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(22, 57);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(84, 74);
-            this.panel1.TabIndex = 58;
+            this.WipeIntervalPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.WipeIntervalPanel.Controls.Add(this.WipeIntervalBiWeeklyRadioButton);
+            this.WipeIntervalPanel.Controls.Add(this.WipeIntervalWeeklyRadioButton);
+            this.WipeIntervalPanel.Controls.Add(this.WipeIntervalMonthlyRadioButton);
+            this.WipeIntervalPanel.Controls.Add(this.WipeIntervalLabel);
+            this.WipeIntervalPanel.Location = new System.Drawing.Point(22, 57);
+            this.WipeIntervalPanel.Name = "WipeIntervalPanel";
+            this.WipeIntervalPanel.Size = new System.Drawing.Size(84, 74);
+            this.WipeIntervalPanel.TabIndex = 14;
             // 
-            // label2
+            // WipeIntervalLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.label2.Location = new System.Drawing.Point(2, 2);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 15);
-            this.label2.TabIndex = 50;
-            this.label2.Text = "Wipe Interval:";
+            this.WipeIntervalLabel.AutoSize = true;
+            this.WipeIntervalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.WipeIntervalLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.WipeIntervalLabel.Location = new System.Drawing.Point(3, 2);
+            this.WipeIntervalLabel.Name = "WipeIntervalLabel";
+            this.WipeIntervalLabel.Size = new System.Drawing.Size(80, 15);
+            this.WipeIntervalLabel.TabIndex = 0;
+            this.WipeIntervalLabel.Text = "Wipe Interval:";
             // 
-            // label3
+            // WipeDayLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.label3.Location = new System.Drawing.Point(21, 19);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 15);
-            this.label3.TabIndex = 54;
-            this.label3.Text = "Thursday";
+            this.WipeDayLabel.AutoSize = true;
+            this.WipeDayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WipeDayLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.WipeDayLabel.Location = new System.Drawing.Point(21, 19);
+            this.WipeDayLabel.Name = "WipeDayLabel";
+            this.WipeDayLabel.Size = new System.Drawing.Size(65, 15);
+            this.WipeDayLabel.TabIndex = 0;
+            this.WipeDayLabel.Text = "Thursday";
             // 
             // BackupSettingsLabel
             // 
@@ -602,7 +602,7 @@
             this.BackupSettingsLabel.Location = new System.Drawing.Point(3, 3);
             this.BackupSettingsLabel.Name = "BackupSettingsLabel";
             this.BackupSettingsLabel.Size = new System.Drawing.Size(88, 13);
-            this.BackupSettingsLabel.TabIndex = 48;
+            this.BackupSettingsLabel.TabIndex = 0;
             this.BackupSettingsLabel.Text = "Backup Settings:";
             // 
             // TitleLabel
@@ -613,7 +613,7 @@
             this.TitleLabel.Location = new System.Drawing.Point(59, 39);
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(221, 25);
-            this.TitleLabel.TabIndex = 53;
+            this.TitleLabel.TabIndex = 0;
             this.TitleLabel.Text = "RustServerManager";
             // 
             // TitleVersionLabel
@@ -624,8 +624,8 @@
             this.TitleVersionLabel.Location = new System.Drawing.Point(62, 59);
             this.TitleVersionLabel.Name = "TitleVersionLabel";
             this.TitleVersionLabel.Size = new System.Drawing.Size(47, 18);
-            this.TitleVersionLabel.TabIndex = 54;
-            this.TitleVersionLabel.Text = "v1.0.0";
+            this.TitleVersionLabel.TabIndex = 0;
+            this.TitleVersionLabel.Text = "v0.0.0";
             // 
             // StartServerPanel
             // 
@@ -635,7 +635,7 @@
             this.StartServerPanel.Location = new System.Drawing.Point(338, 253);
             this.StartServerPanel.Name = "StartServerPanel";
             this.StartServerPanel.Size = new System.Drawing.Size(148, 56);
-            this.StartServerPanel.TabIndex = 53;
+            this.StartServerPanel.TabIndex = 29;
             // 
             // RestartServerButton
             // 
@@ -647,7 +647,7 @@
             this.RestartServerButton.Location = new System.Drawing.Point(121, 5);
             this.RestartServerButton.Name = "RestartServerButton";
             this.RestartServerButton.Size = new System.Drawing.Size(123, 44);
-            this.RestartServerButton.TabIndex = 49;
+            this.RestartServerButton.TabIndex = 31;
             this.RestartServerButton.Text = "Restart Server";
             this.RestartServerButton.UseVisualStyleBackColor = false;
             this.RestartServerButton.Click += new System.EventHandler(this.RestartServerButton_Click);
@@ -661,7 +661,7 @@
             this.StopServerPanel.Location = new System.Drawing.Point(489, 253);
             this.StopServerPanel.Name = "StopServerPanel";
             this.StopServerPanel.Size = new System.Drawing.Size(250, 56);
-            this.StopServerPanel.TabIndex = 54;
+            this.StopServerPanel.TabIndex = 30;
             // 
             // TitleIconPictureBox
             // 
@@ -670,7 +670,7 @@
             this.TitleIconPictureBox.Name = "TitleIconPictureBox";
             this.TitleIconPictureBox.Size = new System.Drawing.Size(52, 47);
             this.TitleIconPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.TitleIconPictureBox.TabIndex = 55;
+            this.TitleIconPictureBox.TabIndex = 0;
             this.TitleIconPictureBox.TabStop = false;
             // 
             // AutoRestartAtTimeCheckBox
@@ -680,7 +680,7 @@
             this.AutoRestartAtTimeCheckBox.Location = new System.Drawing.Point(23, 18);
             this.AutoRestartAtTimeCheckBox.Name = "AutoRestartAtTimeCheckBox";
             this.AutoRestartAtTimeCheckBox.Size = new System.Drawing.Size(126, 17);
-            this.AutoRestartAtTimeCheckBox.TabIndex = 60;
+            this.AutoRestartAtTimeCheckBox.TabIndex = 21;
             this.AutoRestartAtTimeCheckBox.Text = "Auto Restart Daily at:";
             this.AutoRestartAtTimeCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -693,7 +693,7 @@
             this.AutoRestartHourTextBox.Location = new System.Drawing.Point(42, 36);
             this.AutoRestartHourTextBox.Name = "AutoRestartHourTextBox";
             this.AutoRestartHourTextBox.Size = new System.Drawing.Size(22, 21);
-            this.AutoRestartHourTextBox.TabIndex = 61;
+            this.AutoRestartHourTextBox.TabIndex = 22;
             this.AutoRestartHourTextBox.Text = "12";
             // 
             // AutoRestartMinuteTextBox
@@ -705,7 +705,7 @@
             this.AutoRestartMinuteTextBox.Location = new System.Drawing.Point(76, 36);
             this.AutoRestartMinuteTextBox.Name = "AutoRestartMinuteTextBox";
             this.AutoRestartMinuteTextBox.Size = new System.Drawing.Size(29, 21);
-            this.AutoRestartMinuteTextBox.TabIndex = 62;
+            this.AutoRestartMinuteTextBox.TabIndex = 23;
             this.AutoRestartMinuteTextBox.Text = "00";
             // 
             // AutoRestartTimeIdentifierComboBox
@@ -721,7 +721,7 @@
             this.AutoRestartTimeIdentifierComboBox.Location = new System.Drawing.Point(107, 36);
             this.AutoRestartTimeIdentifierComboBox.Name = "AutoRestartTimeIdentifierComboBox";
             this.AutoRestartTimeIdentifierComboBox.Size = new System.Drawing.Size(40, 21);
-            this.AutoRestartTimeIdentifierComboBox.TabIndex = 63;
+            this.AutoRestartTimeIdentifierComboBox.TabIndex = 24;
             this.AutoRestartTimeIdentifierComboBox.Text = "AM";
             // 
             // AutoRestartTimeSeparatorLabel
@@ -732,18 +732,18 @@
             this.AutoRestartTimeSeparatorLabel.Location = new System.Drawing.Point(64, 38);
             this.AutoRestartTimeSeparatorLabel.Name = "AutoRestartTimeSeparatorLabel";
             this.AutoRestartTimeSeparatorLabel.Size = new System.Drawing.Size(11, 16);
-            this.AutoRestartTimeSeparatorLabel.TabIndex = 64;
+            this.AutoRestartTimeSeparatorLabel.TabIndex = 0;
             this.AutoRestartTimeSeparatorLabel.Text = ":";
             // 
-            // label5
+            // RestartSettingsLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.label5.Location = new System.Drawing.Point(4, 3);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 13);
-            this.label5.TabIndex = 65;
-            this.label5.Text = "Restart Settings:";
+            this.RestartSettingsLabel.AutoSize = true;
+            this.RestartSettingsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.RestartSettingsLabel.Location = new System.Drawing.Point(4, 3);
+            this.RestartSettingsLabel.Name = "RestartSettingsLabel";
+            this.RestartSettingsLabel.Size = new System.Drawing.Size(85, 13);
+            this.RestartSettingsLabel.TabIndex = 0;
+            this.RestartSettingsLabel.Text = "Restart Settings:";
             // 
             // ServerStatusLabel
             // 
@@ -751,76 +751,91 @@
             this.ServerStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.ServerStatusLabel.Location = new System.Drawing.Point(1, 0);
             this.ServerStatusLabel.Name = "ServerStatusLabel";
-            this.ServerStatusLabel.Size = new System.Drawing.Size(145, 13);
-            this.ServerStatusLabel.TabIndex = 50;
-            this.ServerStatusLabel.Text = "The server is currently offline.";
+            this.ServerStatusLabel.Size = new System.Drawing.Size(124, 13);
+            this.ServerStatusLabel.TabIndex = 0;
+            this.ServerStatusLabel.Text = "Checking server status...";
             // 
-            // panel3
+            // ServerStatusPanel
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.ServerStatusLabel);
-            this.panel3.Location = new System.Drawing.Point(338, 310);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(401, 16);
-            this.panel3.TabIndex = 56;
+            this.ServerStatusPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.ServerStatusPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ServerStatusPanel.Controls.Add(this.ServerStatusLabel);
+            this.ServerStatusPanel.Location = new System.Drawing.Point(338, 310);
+            this.ServerStatusPanel.Name = "ServerStatusPanel";
+            this.ServerStatusPanel.Size = new System.Drawing.Size(401, 16);
+            this.ServerStatusPanel.TabIndex = 0;
             // 
-            // panel4
+            // WipeSettingsPanel
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.WipeDayLabel);
-            this.panel4.Controls.Add(this.WipeDayTimeSeparatorLabel);
-            this.panel4.Controls.Add(this.WipeTimeIdentifierComboBox);
-            this.panel4.Controls.Add(this.WipeServerButton);
-            this.panel4.Controls.Add(this.StartFromSundayCheckBox);
-            this.panel4.Controls.Add(this.WipeMinuteTextBox);
-            this.panel4.Controls.Add(this.WipeHourTextBox);
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.panel1);
-            this.panel4.Controls.Add(this.panel2);
-            this.panel4.Location = new System.Drawing.Point(338, 90);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(239, 160);
-            this.panel4.TabIndex = 66;
+            this.WipeSettingsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.WipeSettingsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.WipeSettingsPanel.Controls.Add(this.WipeSettingsLabel);
+            this.WipeSettingsPanel.Controls.Add(this.WipeDayTimeSeparatorLabel);
+            this.WipeSettingsPanel.Controls.Add(this.WipeTimeIdentifierComboBox);
+            this.WipeSettingsPanel.Controls.Add(this.WipeServerButton);
+            this.WipeSettingsPanel.Controls.Add(this.StartFromSundayCheckBox);
+            this.WipeSettingsPanel.Controls.Add(this.WipeMinuteTextBox);
+            this.WipeSettingsPanel.Controls.Add(this.WipeHourTextBox);
+            this.WipeSettingsPanel.Controls.Add(this.WipeDayLabel);
+            this.WipeSettingsPanel.Controls.Add(this.WipeIntervalPanel);
+            this.WipeSettingsPanel.Controls.Add(this.WipeBlueprintsPanel);
+            this.WipeSettingsPanel.Location = new System.Drawing.Point(338, 90);
+            this.WipeSettingsPanel.Name = "WipeSettingsPanel";
+            this.WipeSettingsPanel.Size = new System.Drawing.Size(239, 160);
+            this.WipeSettingsPanel.TabIndex = 9;
             // 
-            // panel5
+            // RestartSettingsPanel
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.label5);
-            this.panel5.Controls.Add(this.AutoRestartHourTextBox);
-            this.panel5.Controls.Add(this.AutoRestartAtTimeCheckBox);
-            this.panel5.Controls.Add(this.AutoRestartMinuteTextBox);
-            this.panel5.Controls.Add(this.AutoRestartTimeSeparatorLabel);
-            this.panel5.Controls.Add(this.AutoRestartTimeIdentifierComboBox);
-            this.panel5.Controls.Add(this.AutoRestartOnCrashCheckBox);
-            this.panel5.Location = new System.Drawing.Point(579, 90);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(160, 82);
-            this.panel5.TabIndex = 67;
+            this.RestartSettingsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.RestartSettingsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RestartSettingsPanel.Controls.Add(this.RestartSettingsLabel);
+            this.RestartSettingsPanel.Controls.Add(this.AutoRestartHourTextBox);
+            this.RestartSettingsPanel.Controls.Add(this.AutoRestartAtTimeCheckBox);
+            this.RestartSettingsPanel.Controls.Add(this.AutoRestartMinuteTextBox);
+            this.RestartSettingsPanel.Controls.Add(this.AutoRestartTimeSeparatorLabel);
+            this.RestartSettingsPanel.Controls.Add(this.AutoRestartTimeIdentifierComboBox);
+            this.RestartSettingsPanel.Controls.Add(this.AutoRestartOnCrashCheckBox);
+            this.RestartSettingsPanel.Location = new System.Drawing.Point(579, 90);
+            this.RestartSettingsPanel.Name = "RestartSettingsPanel";
+            this.RestartSettingsPanel.Size = new System.Drawing.Size(160, 82);
+            this.RestartSettingsPanel.TabIndex = 21;
             // 
-            // panel6
+            // BackupSettingsPanel
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.BackupServerButton);
-            this.panel6.Controls.Add(this.BackupOnRestartCheckBox);
-            this.panel6.Controls.Add(this.BackupSettingsLabel);
-            this.panel6.Controls.Add(this.BackupOnWipeCheckBox);
-            this.panel6.Location = new System.Drawing.Point(579, 174);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(160, 76);
-            this.panel6.TabIndex = 68;
+            this.BackupSettingsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.BackupSettingsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BackupSettingsPanel.Controls.Add(this.BackupServerButton);
+            this.BackupSettingsPanel.Controls.Add(this.BackupOnRestartCheckBox);
+            this.BackupSettingsPanel.Controls.Add(this.BackupSettingsLabel);
+            this.BackupSettingsPanel.Controls.Add(this.BackupOnWipeCheckBox);
+            this.BackupSettingsPanel.Location = new System.Drawing.Point(579, 174);
+            this.BackupSettingsPanel.Name = "BackupSettingsPanel";
+            this.BackupSettingsPanel.Size = new System.Drawing.Size(160, 76);
+            this.BackupSettingsPanel.TabIndex = 26;
+            // 
+            // BackupServerButton
+            // 
+            this.BackupServerButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.BackupServerButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.BackupServerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BackupServerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackupServerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.BackupServerButton.Location = new System.Drawing.Point(23, 49);
+            this.BackupServerButton.Name = "BackupServerButton";
+            this.BackupServerButton.Size = new System.Drawing.Size(69, 22);
+            this.BackupServerButton.TabIndex = 28;
+            this.BackupServerButton.Text = "Backup now";
+            this.BackupServerButton.UseVisualStyleBackColor = false;
+            this.BackupServerButton.Click += new System.EventHandler(this.BackupServerButton_Click);
             // 
             // BackupOnRestartCheckBox
             // 
             this.BackupOnRestartCheckBox.AutoSize = true;
             this.BackupOnRestartCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.BackupOnRestartCheckBox.Location = new System.Drawing.Point(23, 34);
+            this.BackupOnRestartCheckBox.Location = new System.Drawing.Point(23, 33);
             this.BackupOnRestartCheckBox.Name = "BackupOnRestartCheckBox";
             this.BackupOnRestartCheckBox.Size = new System.Drawing.Size(102, 17);
-            this.BackupOnRestartCheckBox.TabIndex = 49;
+            this.BackupOnRestartCheckBox.TabIndex = 27;
             this.BackupOnRestartCheckBox.Text = "On Auto Restart";
             this.BackupOnRestartCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -834,7 +849,7 @@
             this.DisplayConsoleCheckBox.Location = new System.Drawing.Point(615, 67);
             this.DisplayConsoleCheckBox.Name = "DisplayConsoleCheckBox";
             this.DisplayConsoleCheckBox.Size = new System.Drawing.Size(90, 19);
-            this.DisplayConsoleCheckBox.TabIndex = 69;
+            this.DisplayConsoleCheckBox.TabIndex = 32;
             this.DisplayConsoleCheckBox.Text = "Display Log";
             this.DisplayConsoleCheckBox.UseVisualStyleBackColor = true;
             this.DisplayConsoleCheckBox.CheckedChanged += new System.EventHandler(this.DisplayConsoleCheckBox_CheckedChanged);
@@ -849,25 +864,10 @@
             this.ClearLogButton.Location = new System.Drawing.Point(702, 65);
             this.ClearLogButton.Name = "ClearLogButton";
             this.ClearLogButton.Size = new System.Drawing.Size(37, 24);
-            this.ClearLogButton.TabIndex = 70;
+            this.ClearLogButton.TabIndex = 33;
             this.ClearLogButton.Text = "Clear";
             this.ClearLogButton.UseVisualStyleBackColor = false;
             this.ClearLogButton.Click += new System.EventHandler(this.ClearLogButton_Click);
-            // 
-            // BackupServerButton
-            // 
-            this.BackupServerButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
-            this.BackupServerButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.BackupServerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BackupServerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackupServerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.BackupServerButton.Location = new System.Drawing.Point(24, 50);
-            this.BackupServerButton.Name = "BackupServerButton";
-            this.BackupServerButton.Size = new System.Drawing.Size(69, 22);
-            this.BackupServerButton.TabIndex = 50;
-            this.BackupServerButton.Text = "Backup now";
-            this.BackupServerButton.UseVisualStyleBackColor = false;
-            this.BackupServerButton.Click += new System.EventHandler(this.BackupServerButton_Click);
             // 
             // MainMenu
             // 
@@ -877,10 +877,10 @@
             this.ClientSize = new System.Drawing.Size(744, 331);
             this.Controls.Add(this.ClearLogButton);
             this.Controls.Add(this.DisplayConsoleCheckBox);
-            this.Controls.Add(this.panel6);
-            this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.BackupSettingsPanel);
+            this.Controls.Add(this.RestartSettingsPanel);
+            this.Controls.Add(this.WipeSettingsPanel);
+            this.Controls.Add(this.ServerStatusPanel);
             this.Controls.Add(this.StopServerPanel);
             this.Controls.Add(this.StartServerPanel);
             this.Controls.Add(this.TitleIconPictureBox);
@@ -898,21 +898,21 @@
             this.TitlebarPanel.ResumeLayout(false);
             this.ServerSettingsPanel.ResumeLayout(false);
             this.ServerSettingsPanel.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.WipeBlueprintsPanel.ResumeLayout(false);
+            this.WipeBlueprintsPanel.PerformLayout();
+            this.WipeIntervalPanel.ResumeLayout(false);
+            this.WipeIntervalPanel.PerformLayout();
             this.StartServerPanel.ResumeLayout(false);
             this.StopServerPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TitleIconPictureBox)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
+            this.ServerStatusPanel.ResumeLayout(false);
+            this.ServerStatusPanel.PerformLayout();
+            this.WipeSettingsPanel.ResumeLayout(false);
+            this.WipeSettingsPanel.PerformLayout();
+            this.RestartSettingsPanel.ResumeLayout(false);
+            this.RestartSettingsPanel.PerformLayout();
+            this.BackupSettingsPanel.ResumeLayout(false);
+            this.BackupSettingsPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -928,7 +928,7 @@
         private System.Windows.Forms.Label ServerInstallDirectoryLabel;
         private System.Windows.Forms.TextBox WipeHourTextBox;
         private System.Windows.Forms.TextBox WipeMinuteTextBox;
-        private System.Windows.Forms.Label WipeDayLabel;
+        private System.Windows.Forms.Label WipeSettingsLabel;
         private System.Windows.Forms.ComboBox WipeTimeIdentifierComboBox;
         private System.Windows.Forms.Label WipeDayTimeSeparatorLabel;
         private System.Windows.Forms.RadioButton WipeIntervalBiWeeklyRadioButton;
@@ -958,25 +958,25 @@
         private System.Windows.Forms.Button MinimizeButton;
         private System.Windows.Forms.Label BackupSettingsLabel;
         private System.Windows.Forms.Button OpenServerPathButton;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label WipeIntervalLabel;
+        private System.Windows.Forms.Label WipeDayLabel;
+        private System.Windows.Forms.Label WipeBlueprintsLabel;
         private System.Windows.Forms.RadioButton BlueprintsEveryWipeRadioButton;
         private System.Windows.Forms.RadioButton BlueprintsForcewipeRadioButton;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel WipeIntervalPanel;
+        private System.Windows.Forms.Panel WipeBlueprintsPanel;
         private System.Windows.Forms.RadioButton BlueprintsNeverRadioButton;
         private System.Windows.Forms.CheckBox AutoRestartAtTimeCheckBox;
         private System.Windows.Forms.TextBox AutoRestartHourTextBox;
         private System.Windows.Forms.TextBox AutoRestartMinuteTextBox;
         private System.Windows.Forms.ComboBox AutoRestartTimeIdentifierComboBox;
         private System.Windows.Forms.Label AutoRestartTimeSeparatorLabel;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label RestartSettingsLabel;
         private System.Windows.Forms.Label ServerStatusLabel;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel ServerStatusPanel;
+        private System.Windows.Forms.Panel WipeSettingsPanel;
+        private System.Windows.Forms.Panel RestartSettingsPanel;
+        private System.Windows.Forms.Panel BackupSettingsPanel;
         private System.Windows.Forms.CheckBox BackupOnRestartCheckBox;
         private System.Windows.Forms.CheckBox DisplayConsoleCheckBox;
         private System.Windows.Forms.Button ClearLogButton;

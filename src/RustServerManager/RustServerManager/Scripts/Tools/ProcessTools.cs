@@ -16,7 +16,7 @@ namespace RustServerManager.Tools
 
         public static void WaitForProcess(string processName)
         {
-            Tools.LogTools.LogEvent("PROCESS/INFO", "Waiting for " + processName + "...", false, false, ConsoleColor.Gray);
+            Tools.LogTools.LogEvent("PROCESS/INFO", "Waiting for " + processName + "...", false, false, ConsoleColor.DarkGray);
             Process[] processes = Process.GetProcessesByName(processName);
             foreach (Process process in processes)
             {

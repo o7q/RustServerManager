@@ -107,6 +107,8 @@ namespace RustServerManager
                 Tools.LogTools.LogEvent("MAIN/INFO", "RustDedicated is currently running, attempting to recover wipe timer...", false, false, ConsoleColor.Gray);
                 EnableWipeTimer();
             }
+
+            TitleVersionLabel.Text = VERSION;
         }
 
         private bool serverAllowedToAutoRestart = true;
@@ -151,7 +153,7 @@ namespace RustServerManager
 
                 ServerStatusLabel.Invoke((MethodInvoker)delegate
                 {
-                    ServerStatusLabel.Text = "The server is currently offline.";
+                    ServerStatusLabel.Text = "The server is offline.";
                     ServerStatusLabel.ForeColor = Color.FromArgb(255, 180, 180, 180);
                 });
             }
@@ -226,7 +228,6 @@ namespace RustServerManager
                 return;
             }
 
-
             Tools.LogTools.LogEvent("MAIN/INFO", "Attemping to restart RustDedicated...", false, false, ConsoleColor.Gray);
             
             SERVER_ALLOWED_TO_AUTO_CRASH_RESTART = false;
@@ -267,6 +268,7 @@ namespace RustServerManager
                 return;
             }
 
+            UpdateConfig();
             InitiateServerWipe(BlueprintsEveryWipeRadioButton.Checked);
         }
 
@@ -280,6 +282,8 @@ namespace RustServerManager
             }
 
             Tools.LogTools.LogEvent("MAIN/INFO", "Initiating server backup...", false, false, ConsoleColor.Gray);
+
+            UpdateConfig();
             StopRustDedicated(true);
             BackupServer();
         }

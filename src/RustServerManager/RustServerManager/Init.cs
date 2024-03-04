@@ -21,7 +21,7 @@ namespace RustServerManager
 
             if (!File.Exists("steamcmd.exe"))
             {
-                DialogResult prompt = MessageBox.Show("steamcmd.exe was not found!\nDo you want RustServerManager to download it automatically?", "", MessageBoxButtons.YesNo);
+                DialogResult prompt = MessageBox.Show("steamcmd.exe was not found!\nDo you want to download it automatically?", "", MessageBoxButtons.YesNo);
 
                 if (prompt == DialogResult.Yes)
                 {
