@@ -21,7 +21,7 @@ namespace RustServerManager.Server.RustDedicated
             command.Arguments = "/c title RustServerManager - Server Identity: \"" + CONFIG.SERVER_IDENTITY + "\" - Server Seed: \"" + CONFIG.SERVER_SEED + "\" & " +
                             "steamcmd.exe +force_install_dir \"" + CONFIG.STEAMCMD_FORCE_INSTALL_DIR + "\" +login anonymous +app_update 258550 +quit & " +
                             " cd \"" + CONFIG.STEAMCMD_FORCE_INSTALL_DIR + "\" & " +
-                            "RustDedicated.exe -batchmode +server.identity " + CONFIG.SERVER_IDENTITY + " " + CONFIG.SERVER_ARGUMENTS + " +server.seed " + CONFIG.SERVER_SEED;
+                            "RustDedicated.exe -batchmode +server.identity " + CONFIG.SERVER_IDENTITY + " +server.seed " + CONFIG.SERVER_SEED + " " + CONFIG.SERVER_ARGUMENTS.Replace('\n', ' ');
             command.FileName = "cmd.exe";
             Process.Start(command);
 

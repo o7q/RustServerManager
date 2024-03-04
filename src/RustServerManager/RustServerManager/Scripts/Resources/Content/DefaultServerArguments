@@ -1,0 +1,8 @@
++server.port 28015
++server.level "Procedural Map"
++server.worldsize 4000
++server.maxplayers 10
++server.hostname "My Rust Server"
++server.description "Welcome to my Rust Server!"
++server.url "https://myrustsite.com"
++server.headerimage "http://myrustsite.com/header.jpg"

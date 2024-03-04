@@ -2,6 +2,7 @@
 using System.IO;
 using System.Timers;
 using System.Windows.Forms;
+using System.Drawing;
 using System.Diagnostics;
 
 using static RustServerManager.Data.Config.ConfigManager;
@@ -12,9 +13,9 @@ using static RustServerManager.Server.Wipe.WipeManager;
 using static RustServerManager.Server.Wipe.WipeTimerManager;
 using static RustServerManager.Server.Backup.BackupManager;
 using static RustServerManager.Server.RustDedicated.RustDedicatedProcess;
+using static RustServerManager.Resources.ResourceReader;
 
 using static RustServerManager.Global;
-using System.Drawing;
 
 namespace RustServerManager
 {
@@ -91,6 +92,8 @@ namespace RustServerManager
             else
             {
                 Tools.LogTools.LogEvent("MAIN/INFO", "No config exists, configuring default settings...", false, false, ConsoleColor.DarkGray);
+
+                ServerArgumentsTextBox.Text = ReadEmbeddedResource("RustServerManager.Scripts.Resources.Content.DefaultServerArguments");
 
                 CONFIG.WIPE_DATETIME_SHOULD_UPDATE = true;
             }

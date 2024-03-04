@@ -142,7 +142,7 @@
             this.ServerArgumentsTextBox.Name = "ServerArgumentsTextBox";
             this.ServerArgumentsTextBox.Size = new System.Drawing.Size(312, 66);
             this.ServerArgumentsTextBox.TabIndex = 8;
-            this.ServerArgumentsTextBox.Text = "+server.level \"Procedural Map\" +server.worldsize 4000";
+            this.ServerArgumentsTextBox.Text = "";
             // 
             // ServerArgumentsLabel
             // 
@@ -151,9 +151,9 @@
             this.ServerArgumentsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.ServerArgumentsLabel.Location = new System.Drawing.Point(7, 143);
             this.ServerArgumentsLabel.Name = "ServerArgumentsLabel";
-            this.ServerArgumentsLabel.Size = new System.Drawing.Size(107, 15);
+            this.ServerArgumentsLabel.Size = new System.Drawing.Size(234, 15);
             this.ServerArgumentsLabel.TabIndex = 0;
-            this.ServerArgumentsLabel.Text = "Server Arguments:";
+            this.ServerArgumentsLabel.Text = "Server Arguments (separated by newline):";
             // 
             // ForceInstallDirTextBox
             // 

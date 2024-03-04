@@ -64,6 +64,7 @@
     <Compile Include="Scripts\Data\Config\ConfigManager.cs" />
     <Compile Include="Scripts\Data\Config\ConfigStructure.cs" />
     <Compile Include="Scripts\Global.cs" />
+    <Compile Include="Scripts\Resources\ResourceReader.cs" />
     <Compile Include="Scripts\Server\Backup\BackupManager.cs" />
     <Compile Include="Scripts\Server\Wipe\WipeManager.cs" />
     <Compile Include="Scripts\Server\Wipe\WipeTimerManager.cs" />
@@ -95,6 +96,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Scripts\Resources\Content\DefaultServerArguments" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
