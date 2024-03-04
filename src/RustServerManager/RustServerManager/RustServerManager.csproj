@@ -74,6 +74,7 @@
     <Compile Include="Scripts\Tools\ProcessTools.cs" />
     <Compile Include="Scripts\Server\RustDedicated\RustDedicatedProcess.cs" />
     <Compile Include="Scripts\Tools\ShellTools.cs" />
+    <Compile Include="Scripts\Tools\StringTools.cs" />
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>

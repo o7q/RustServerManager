@@ -2,12 +2,17 @@
 using System.IO;
 using System.Text;
 
+using static RustServerManager.Tools.StringTools;
 using static RustServerManager.Data.Config.ConfigStructure;
 
 namespace RustServerManager.Data.Config
 {
     public static class ConfigManager
     {
+        // this will convert the string to base64 to prevent the config reader from breaking
+        // such as if the user happened to use a special split character such as '¶' or 'Ԯ' somewhere in the configuration
+        private static bool preventUnsafeConfigStrings = true;
+
         public static void WriteConfig(ConfigBase queueItem, string location)
         {
             Tools.LogTools.LogEvent("CONFIG/INFO", "Attempting to write config...", false, false, ConsoleColor.DarkGray);
@@ -16,8 +21,8 @@ namespace RustServerManager.Data.Config
             {
                 object value = field.GetValue(queueItem);
                 if (value != null)
-                    sb.Append(field.Name + '¶' + value.ToString());
-                sb.Append('╒');
+                    sb.Append(field.Name + '¶' + (preventUnsafeConfigStrings ? EncodeString(value.ToString()) : value.ToString()));
+                sb.Append('Ԯ');
             }
             sb.Length--;
             File.WriteAllText(location, sb.ToString());
@@ -29,11 +34,14 @@ namespace RustServerManager.Data.Config
             ConfigBase config = new ConfigBase();
 
             string configRaw = File.ReadAllText(location);
-            string[] configSetting = configRaw.Split('╒');
+            string[] configSetting = configRaw.Split('Ԯ');
 
             for (int i = 0; i < configSetting.Length; i++)
             {
                 string[] configSettingPair = configSetting[i].Split('¶');
+
+                if (preventUnsafeConfigStrings)
+                    configSettingPair[1] = DecodeString(configSettingPair[1]);
 
                 switch (configSettingPair[0])
                 {
