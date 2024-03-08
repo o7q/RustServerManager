@@ -80,7 +80,7 @@ namespace RustServerManager.Server.Wipe
             allowWipeTimerScan = false;
         }
 
-        private static void UpdateNextWipeDate()
+        public static void UpdateNextWipeDate()
         {
             // DEBUG TEST CODE
             /*CONFIG.WIPE_DATETIME = DateTime.Now.Add(TimeSpan.FromSeconds(20));

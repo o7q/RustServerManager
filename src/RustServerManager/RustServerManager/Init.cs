@@ -3,6 +3,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Net;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 using static RustServerManager.Global;
 
@@ -13,6 +14,12 @@ namespace RustServerManager
         [STAThread]
         static void Main()
         {
+            // prevent user from opening multiple instances of RSM
+            if (Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
+            {
+                Environment.Exit(0);
+            }
+
             if (!Directory.Exists("RustServerManager\\logs"))
                 Directory.CreateDirectory("RustServerManager\\logs");
 

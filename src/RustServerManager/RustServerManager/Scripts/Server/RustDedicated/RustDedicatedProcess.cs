@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Diagnostics;
 using static RustServerManager.Tools.ShellTools;
 using static RustServerManager.Tools.ProcessTools;
@@ -18,15 +19,22 @@ namespace RustServerManager.Server.RustDedicated
                 return;
 
             ProcessStartInfo command = new ProcessStartInfo();
-            command.Arguments = "/c title RustServerManager - Server Identity: \"" + CONFIG.SERVER_IDENTITY + "\" - Server Seed: \"" + CONFIG.SERVER_SEED + "\" & " +
+            command.Arguments = "/c title RustDedicated (RSM) - Server Identity: \"" + CONFIG.SERVER_IDENTITY + "\" - Server Seed: \"" + CONFIG.SERVER_SEED + "\" & " +
                             "steamcmd.exe +force_install_dir \"" + CONFIG.STEAMCMD_FORCE_INSTALL_DIR + "\" +login anonymous +app_update 258550 +quit & " +
                             " cd \"" + CONFIG.STEAMCMD_FORCE_INSTALL_DIR + "\" & " +
                             "RustDedicated.exe -batchmode +server.identity " + CONFIG.SERVER_IDENTITY + " +server.seed " + CONFIG.SERVER_SEED + " " + CONFIG.SERVER_ARGUMENTS.Replace('\n', ' ');
             command.FileName = "cmd.exe";
             Process.Start(command);
 
-            SERVER_ALLOWED_TO_AUTO_CRASH_RESTART = true;
             EnableWipeTimer();
+
+            DelayServerAutoStart(3000);
+        }
+
+        private static async void DelayServerAutoStart(int time)
+        {
+            await Task.Delay(time);
+            SERVER_ALLOWED_TO_AUTO_CRASH_RESTART = true;
         }
 
         public static void StopRustDedicated(bool waitForExit)
