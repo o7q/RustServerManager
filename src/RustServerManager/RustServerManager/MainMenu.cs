@@ -229,11 +229,10 @@ namespace RustServerManager
             DateTime currentTime = DateTime.Now;
             DateTime compareTime = new DateTime(currentTime.Year, currentTime.Month, currentTime.Day);
 
-            int hour = 0;
-            int minute = 0;
-
             Invoke((MethodInvoker)delegate
             {
+                int hour, minute;
+
                 int.TryParse(AutoRestartHourTextBox.Text, out hour);
                 int.TryParse(AutoRestartMinuteTextBox.Text, out minute);
 

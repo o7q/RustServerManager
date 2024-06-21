@@ -10,9 +10,7 @@ namespace RustServerManager.Server.Wipe
     public static class WipeTimerManager
     {
         private static System.Timers.Timer timer = new System.Timers.Timer(1000);
-
         private static bool doWipe = false;
-
         private static bool allowWipeTimerScan = false;
 
         public static void InitiateWipeTimer()
